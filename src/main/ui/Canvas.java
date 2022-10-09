@@ -4,6 +4,7 @@ import model.*;
 
 import java.util.*;
 
+// Course Database application
 public class Canvas {
     public final List<Course> courseList = new ArrayList<>();
     private final List<Instructor> instructorList = new ArrayList<>();
@@ -22,10 +23,13 @@ public class Canvas {
 
     private Scanner input;
 
+    // EFFECTS: runs the course database application
     public Canvas() {
         runCanvas();
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input
     private void runCanvas() {
         boolean keepGoing = true;
 
@@ -45,6 +49,8 @@ public class Canvas {
         endProgram();
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes course list, instructor list and student list in the database
     private void initProgram() {
         setInstructorAndCourseList();
         setStudentList();
@@ -53,6 +59,8 @@ public class Canvas {
         input.useDelimiter("\n");
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes course list and instructor list
     private void setInstructorAndCourseList() {
         Instructor gregor = new Instructor("gregor");
         Instructor tara = new Instructor("tara");
@@ -79,6 +87,8 @@ public class Canvas {
         courseList.add(math180);
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes student list
     private void setStudentList() {
         Student miranda = new Student("miranda");
         Student francis = new Student("francis");
@@ -96,6 +106,8 @@ public class Canvas {
         studentList.add(steve);
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes students' course registration
     private void setCourseRegistration() {
         Random random = new Random();
         for (Course c : courseList) {
@@ -110,6 +122,7 @@ public class Canvas {
         }
     }
 
+    // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nPlease select your identity:");
         System.out.println("\ti -> instructor");
@@ -117,6 +130,8 @@ public class Canvas {
         System.out.println(QUIT_PROMPT);
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("i")) {
             goInstructorInterface();
@@ -127,6 +142,7 @@ public class Canvas {
         }
     }
 
+    // EFFECTS: displays welcome interface to instructor and asks about the next move
     private void goInstructorInterface() {
         Instructor instructor = spotInstructor(instructorList);
 
@@ -137,6 +153,8 @@ public class Canvas {
         instructorAction(instructor);
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user command
     private void instructorAction(Instructor instructor) {
         label:
         while (true) {
@@ -161,6 +179,7 @@ public class Canvas {
         }
     }
 
+    // EFFECTS: displays menu of options to user
     private void displayInstructorAction() {
         System.out.println("\nWhat would you like to do?");
         System.out.println("\tdetail -> look into the details of a certain course");
@@ -169,6 +188,8 @@ public class Canvas {
         System.out.println(RETURN_PROMPT);
     }
 
+    // REQUIRES: course != null
+    // EFFECTS: prints the details of the given course
     private void printCourseDetail(Course course) {
         System.out.println("\nHere are the details of " + course.getCourseID() + ":");
         System.out.println("Course: " + course.getCourseID()
@@ -177,6 +198,9 @@ public class Canvas {
                 + "\nStudents: " + course.getStudents());
     }
 
+    // REQUIRES: instructor != null
+    // MODIFIES: this
+    // EFFECTS: adds student's grades of a certain course
     private void toAddStudentGrade(Instructor instructor) {
         Course c = spotCourse(instructor.getCourses());
         Student s = spotStudent(c.getStudents());
@@ -198,6 +222,9 @@ public class Canvas {
         System.out.println("\n" + name + "'s grades are added successfully!");
     }
 
+    // REQUIRES: instructor != null
+    // MODIFIES: this
+    // EFFECTS: adds a student to a certain course
     private void toAddStudentToCourse(Instructor instructor) {
         Course c = spotCourse(instructor.getCourses());
 
@@ -224,6 +251,7 @@ public class Canvas {
     }
 
 
+    // EFFECTS: displays welcome interface to student and asks about the next move
     private void goStudentInterface() {
         Student student = spotStudent(studentList);
 
@@ -234,6 +262,8 @@ public class Canvas {
         studentAction(student);
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user command
     private void studentAction(Student student) {
         label:
         while (true) {
@@ -258,6 +288,7 @@ public class Canvas {
         }
     }
 
+    // EFFECTS: displays menu of options to user
     private void displayStudentAction() {
         System.out.println("\nWhat would you like to do?");
         System.out.println("\tdetail -> look into the details of a certain course");
@@ -266,6 +297,8 @@ public class Canvas {
         System.out.println(RETURN_PROMPT);
     }
 
+    // REQUIRES: student != null
+    // EFFECTS: prints student's grades of all the courses taken
     private void toPrintGrades(Student student) {
         System.out.println("\nHere are your grades of all the courses taken:");
         for (Course c : student.getCourses()) {
@@ -278,6 +311,9 @@ public class Canvas {
         }
     }
 
+    // REQUIRES: student != null
+    // MODIFIES: this
+    // EFFECTS: adds student to a certain course
     private void toRegisterNewCourse(Student student) {
         Course c = spotCourse(courseList);
         if (student.getCourses().contains(c)) {
@@ -288,7 +324,8 @@ public class Canvas {
         }
     }
 
-
+    // REQUIRES: courseCollection != null
+    // EFFECTS: spots the target course in a collection of courses based on user input
     private Course spotCourse(Collection<Course> courseCollection) {
         System.out.println("\nPlease enter the courseID of the course:");
         System.out.println(COURSE_NOTE + courseCollection);
@@ -303,6 +340,8 @@ public class Canvas {
         }
     }
 
+    // REQUIRES: instructorCollection != null
+    // EFFECTS: spots the target instructor in a collection of instructors based on user input
     private Instructor spotInstructor(Collection<Instructor> instructorCollection) {
         System.out.println("\nPlease enter the name of the instructor:");
         System.out.println(INSTRUCTOR_NOTE + instructorCollection);
@@ -317,6 +356,8 @@ public class Canvas {
         }
     }
 
+    // REQUIRES: studentCollection != null
+    // EFFECTS: spots the target student in a collection of students based on user input
     private Student spotStudent(Collection<Student> studentCollection) {
         System.out.println("\nPlease enter the name of the student:");
         System.out.println(STUDENT_NOTE + studentCollection);
@@ -331,7 +372,8 @@ public class Canvas {
         }
     }
 
-    //EFFECTS: removes white space and quotation marks around s
+    //EFFECTS: handles user input, converts the input into lower case and
+    //         removes white space and quotation marks around the input
     private String nextCommand() {
         String command = input.next().toLowerCase();
         command = command.trim();

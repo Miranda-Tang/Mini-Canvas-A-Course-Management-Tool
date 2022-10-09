@@ -1,5 +1,6 @@
 package model;
 
+// Represents the rank of a student's project
 public enum Rank {
     EXCELLENT {
         @Override
@@ -30,5 +31,5 @@ public enum Rank {
         public String toString() {
             return "unacceptable";
         }
-    };
+    }
 }
