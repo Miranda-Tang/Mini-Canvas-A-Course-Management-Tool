@@ -12,6 +12,7 @@ public class CourseGradeTest {
     private CourseGrade courseGrade3;
     private CourseGrade courseGrade4;
     private CourseGrade courseGrade5;
+    private CourseGrade falseCourseGrade;
 
     @BeforeEach
     public void beforeRun() {
