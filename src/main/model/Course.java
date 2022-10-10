@@ -49,7 +49,7 @@ public class Course {
 
     // REQUIRES: s != null
     // MODIFIES: this
-    // EFFECTS: add s to the students of this course
+    // EFFECTS: adds student s to the students of this course
     public void addStudent(Student s) {
         students.add(s);
     }

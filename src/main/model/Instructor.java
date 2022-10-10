@@ -11,7 +11,7 @@ public class Instructor extends Personnel {
 
     // REQUIRES: s != null && c != null
     // MODIFIES: s, c
-    // EFFECTS: add student s to course c
+    // EFFECTS: adds student s to course c
     public void addStudentToCourse(Student s, Course c) {
         s.addCourse(c);
     }
@@ -19,7 +19,7 @@ public class Instructor extends Personnel {
     // REQUIRES: s != null && c != null &&
     //           0 <= skippedClass <= 10 && 0 <= correctQuestion <= 10
     // MODIFIES: s
-    // EFFECTS: add the grades of a certain course c to student s's course grades list
+    // EFFECTS: adds the grade of a certain course c to student s's course grades list
     public void addStudentGrade(Student s, Course c, int skippedClass, Rank projectRank, int correctQuestion) {
         CourseGrade courseGrade = new CourseGrade(c, skippedClass, projectRank, correctQuestion);
         s.getCourseGrades().add(courseGrade);

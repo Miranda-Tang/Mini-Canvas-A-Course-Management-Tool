@@ -19,7 +19,7 @@ public class Student extends Personnel {
         return courseGrades;
     }
 
-    // EFFECTS: return a set of courses the grades of which have been included in course grades list
+    // EFFECTS: returns a set of courses the grades of which have been included in course grades list
     public Set<Course> getCoursesWithGrade() {
         Set<Course> res = new HashSet<>();
         for (CourseGrade cg : courseGrades) {
@@ -30,7 +30,7 @@ public class Student extends Personnel {
 
     // REQUIRES: c != null
     // MODIFIES: this, c
-    // EFFECTS: add student s to course c
+    // EFFECTS: adds student s to course c
     public void addCourse(Course c) {
         courses.add(c);
         c.addStudent(this);

@@ -200,7 +200,7 @@ public class Canvas {
 
     // REQUIRES: instructor != null
     // MODIFIES: this
-    // EFFECTS: adds student's grades of a certain course
+    // EFFECTS: enters student's grades of a certain course
     private void toAddStudentGrade(Instructor instructor) {
         Course c = spotCourse(instructor.getCourses());
         Student s = spotStudent(c.getStudents());
@@ -292,7 +292,7 @@ public class Canvas {
     private void displayStudentAction() {
         System.out.println("\nWhat would you like to do?");
         System.out.println("\tdetail -> look into the details of a certain course");
-        System.out.println("\tgrade -> see your grades of all the courses taken");
+        System.out.println("\tgrade -> view your grades of all the courses taken");
         System.out.println("\tregister -> register a new course");
         System.out.println(RETURN_PROMPT);
     }
@@ -301,13 +301,13 @@ public class Canvas {
     // EFFECTS: prints student's grades of all the courses taken
     private void toPrintGrades(Student student) {
         System.out.println("\nHere are your grades of all the courses taken:");
+        for (CourseGrade courseGrade : student.getCourseGrades()) {
+            System.out.println(courseGrade);
+        }
         for (Course c : student.getCourses()) {
             if (!student.getCoursesWithGrade().contains(c)) {
                 System.out.println("Course: " + c.getCourseID() + ", Grade: Not published");
             }
-        }
-        for (CourseGrade courseGrade : student.getCourseGrades()) {
-            System.out.println(courseGrade);
         }
     }
 

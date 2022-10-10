@@ -3,7 +3,7 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
-// Represents a person with a name and a set of courses involved, extended by Instructor and Student class
+// Represents a person with a name and a set of courses involved
 public class Personnel {
     protected final String name;
     protected Set<Course> courses;
