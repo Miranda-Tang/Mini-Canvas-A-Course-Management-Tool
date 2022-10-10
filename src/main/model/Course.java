@@ -6,8 +6,8 @@ import java.util.Set;
 // Represents a course having an ID, credits, instructor and a set of students
 public class Course {
     private final String courseID;
-    private int credits;
-    private Instructor instructor;
+    private final int credits;
+    private final Instructor instructor;
     private final Set<Student> students;
 
     // REQUIRES: courseID != null && credits > 0 && instructor != null
@@ -37,16 +37,6 @@ public class Course {
         return students;
     }
 
-    // setters
-    public void setCredits(int credits) {
-        this.credits = credits;
-    }
-
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
-        instructor.getCourses().add(this);
-    }
-
     // REQUIRES: s != null
     // MODIFIES: this
     // EFFECTS: adds student s to the students of this course
@@ -58,4 +48,5 @@ public class Course {
     public String toString() {
         return courseID;
     }
+
 }

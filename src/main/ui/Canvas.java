@@ -218,7 +218,8 @@ public class Canvas {
         System.out.println(GRADE_NOTE);
         int correctQuestion = input.nextInt();
 
-        instructor.addStudentGrade(s, c, skippedClass, projectRank, correctQuestion);
+        CourseGrade courseGrade = new CourseGrade(c, skippedClass, projectRank, correctQuestion);
+        instructor.addStudentGrade(s, courseGrade);
         System.out.println("\n" + name + "'s grades are added successfully!");
     }
 

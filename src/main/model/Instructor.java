@@ -9,19 +9,18 @@ public class Instructor extends Personnel {
         super(name);
     }
 
-    // REQUIRES: s != null && c != null
+    // REQUIRES: s != null && c != null &&
+    //           c is one of the courses the instructor is teaching
     // MODIFIES: s, c
     // EFFECTS: adds student s to course c
     public void addStudentToCourse(Student s, Course c) {
         s.addCourse(c);
     }
 
-    // REQUIRES: s != null && c != null &&
-    //           0 <= skippedClass <= 10 && 0 <= correctQuestion <= 10
+    // REQUIRES: s != null && courseGrade != null
     // MODIFIES: s
-    // EFFECTS: adds the grade of a certain course c to student s's course grades list
-    public void addStudentGrade(Student s, Course c, int skippedClass, Rank projectRank, int correctQuestion) {
-        CourseGrade courseGrade = new CourseGrade(c, skippedClass, projectRank, correctQuestion);
+    // EFFECTS: adds courseGrade to student s's course grades list
+    public void addStudentGrade(Student s, CourseGrade courseGrade) {
         s.getCourseGrades().add(courseGrade);
     }
 
