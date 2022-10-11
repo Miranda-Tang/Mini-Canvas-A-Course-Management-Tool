@@ -31,7 +31,7 @@ public enum Rank {
         public String toString() {
             return "unacceptable";
         }
-    },
+    }, // invalid input, for test coverage only
     INVALID {
         @Override
         public String toString() {
