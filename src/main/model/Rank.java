@@ -32,7 +32,7 @@ public enum Rank {
             return "unacceptable";
         }
     },
-    DEFAULT {
+    INVALID {
         @Override
         public String toString() {
             return "invalid";

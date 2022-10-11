@@ -35,28 +35,20 @@ public class CourseGrade {
         // EFFECTS: calculates student's project grade, then returns the grade
         @Override
         public int mark() {
-            int projectGrade = 0;
             switch (projectRank) {
                 case EXCELLENT:
-                    projectGrade = 90;
-                    break;
+                    return 90;
                 case GOOD:
-                    projectGrade = 80;
-                    break;
+                    return 80;
                 case ADEQUATE:
-                    projectGrade = 70;
-                    break;
+                    return 70;
                 case INSUFFICIENT:
-                    projectGrade = 60;
-                    break;
+                    return 60;
                 case UNACCEPTABLE:
-                    projectGrade = 50;
-                    break;
+                    return 50;
                 default:
-                    projectGrade = -1;
-                    break;
+                    return -1;
             }
-            return projectGrade;
         }
     }
 

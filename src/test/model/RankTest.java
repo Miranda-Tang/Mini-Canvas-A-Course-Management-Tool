@@ -11,6 +11,7 @@ public class RankTest {
     private final Rank adequate = ADEQUATE;
     private final Rank insufficient = INSUFFICIENT;
     private final Rank unacceptable = UNACCEPTABLE;
+    private final Rank invalid = INVALID;
 
     @Test
     public void testRankToString() {
@@ -19,5 +20,6 @@ public class RankTest {
         assertEquals("adequate", adequate.toString());
         assertEquals("insufficient", insufficient.toString());
         assertEquals("unacceptable", unacceptable.toString());
+        assertEquals("invalid", invalid.toString());
     }
 }

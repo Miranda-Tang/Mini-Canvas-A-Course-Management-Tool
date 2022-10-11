@@ -211,8 +211,8 @@ public class Canvas {
         System.out.println(GRADE_NOTE);
         int skippedClass = input.nextInt();
         System.out.println("\nPlease rank " + name + "'s project:");
-        for (Rank r : Rank.values()) {
-            System.out.println("\t" + r.toString());
+        for (int i = 0; i < Rank.values().length - 1; i++) {
+            System.out.println("\t" + Rank.values()[i].toString());
         }
         Rank projectRank = Rank.valueOf(nextCommand().toUpperCase());
         System.out.println("\nHow many questions did " + name + " answer correctly in the exam?");

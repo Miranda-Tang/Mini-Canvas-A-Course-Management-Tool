@@ -12,7 +12,6 @@ public class CourseGradeTest {
     private CourseGrade courseGrade3;
     private CourseGrade courseGrade4;
     private CourseGrade courseGrade5;
-    private CourseGrade falseCourseGrade;
 
     @BeforeEach
     public void beforeRun() {
@@ -22,7 +21,7 @@ public class CourseGradeTest {
         courseGrade3 = new CourseGrade(course, 1, ADEQUATE, 8);
         courseGrade4 = new CourseGrade(course, 1, INSUFFICIENT, 8);
         courseGrade5 = new CourseGrade(course, 1, UNACCEPTABLE, 8);
-        falseCourseGrade = new CourseGrade(course, 1, DEFAULT, 8);
+        CourseGrade invalidCourseGrade = new CourseGrade(course, 1, INVALID, 8);
     }
 
     @Test
