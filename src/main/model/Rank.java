@@ -31,5 +31,11 @@ public enum Rank {
         public String toString() {
             return "unacceptable";
         }
+    },
+    DEFAULT {
+        @Override
+        public String toString() {
+            return "invalid";
+        }
     }
 }

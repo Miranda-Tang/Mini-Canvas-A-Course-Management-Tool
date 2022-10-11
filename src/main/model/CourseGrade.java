@@ -51,6 +51,10 @@ public class CourseGrade {
                     break;
                 case UNACCEPTABLE:
                     projectGrade = 50;
+                    break;
+                default:
+                    projectGrade = -1;
+                    break;
             }
             return projectGrade;
         }

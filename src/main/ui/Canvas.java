@@ -5,6 +5,7 @@ import model.*;
 import java.util.*;
 
 // Course Database application
+// CITATION: the structure of the following program is borrowed from TellerApp
 public class Canvas {
     public final List<Course> courseList = new ArrayList<>();
     private final List<Instructor> instructorList = new ArrayList<>();
