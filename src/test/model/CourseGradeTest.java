@@ -12,26 +12,35 @@ public class CourseGradeTest {
     private CourseGrade courseGrade3;
     private CourseGrade courseGrade4;
     private CourseGrade courseGrade5;
+    private CourseGrade courseGrade6;
 
     @BeforeEach
     public void beforeRun() {
-        Course course = new Course("cpsc 110", 4, new Instructor("gregor"));
-        courseGrade1 = new CourseGrade(course, 1, EXCELLENT, 8);
-        courseGrade2 = new CourseGrade(course, 1, GOOD, 8);
-        courseGrade3 = new CourseGrade(course, 1, ADEQUATE, 8);
-        courseGrade4 = new CourseGrade(course, 1, INSUFFICIENT, 8);
-        courseGrade5 = new CourseGrade(course, 1, UNACCEPTABLE, 8);
-        CourseGrade invalidCourseGrade = new CourseGrade(course, 1, INVALID, 8);
+        String courseID = "cpsc 110";
+        courseGrade1 = new CourseGrade(courseID, 1, EXCELLENT, 8);
+        courseGrade2 = new CourseGrade(courseID, 1, GOOD, 8);
+        courseGrade3 = new CourseGrade(courseID, 1, ADEQUATE, 8);
+        courseGrade4 = new CourseGrade(courseID, 1, INSUFFICIENT, 8);
+        courseGrade5 = new CourseGrade(courseID, 1, UNACCEPTABLE, 8);
+        CourseGrade invalidCourseGrade = new CourseGrade(courseID, 1, INVALID, 8);
+
+        courseGrade6 = new CourseGrade(courseID, 92);
     }
 
     @Test
-    public void testConstructorAndNestedClasses() {
-        assertEquals("cpsc 110", courseGrade1.getCourse().getCourseID());
+    public void testFirstConstructorAndNestedClasses() {
+        assertEquals("cpsc 110", courseGrade1.getCourseID());
         assertEquals((int) Math.round(0.2 * 95 + 0.3 * 90 + 0.5 * 80), courseGrade1.getGrade());
         assertEquals((int) Math.round(0.2 * 95 + 0.3 * 80 + 0.5 * 80), courseGrade2.getGrade());
         assertEquals((int) Math.round(0.2 * 95 + 0.3 * 70 + 0.5 * 80), courseGrade3.getGrade());
         assertEquals((int) Math.round(0.2 * 95 + 0.3 * 60 + 0.5 * 80), courseGrade4.getGrade());
         assertEquals((int) Math.round(0.2 * 95 + 0.3 * 50 + 0.5 * 80), courseGrade5.getGrade());
+    }
+
+    @Test
+    public void testSecondConstructor() {
+        assertEquals("cpsc 110", courseGrade6.getCourseID());
+        assertEquals(92, courseGrade6.getGrade());
     }
 
     @Test

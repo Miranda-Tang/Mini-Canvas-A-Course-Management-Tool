@@ -3,7 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 import static model.Rank.EXCELLENT;
 import static model.Rank.GOOD;
@@ -21,7 +21,7 @@ public class InstructorTest {
     @Test
     public void testConstructor() {
         assertEquals("harold", instructor.getName());
-        assertEquals(new HashSet<>(), instructor.getCourses());
+        assertEquals(new ArrayList<>(), instructor.getCourses());
     }
 
     @Test
@@ -58,8 +58,7 @@ public class InstructorTest {
     @Test
     public void testAddStudentGradeOneTime() {
         Student s = new Student("john");
-        Course c = new Course("cpsc 110", 4, instructor);
-        CourseGrade courseGrade = new CourseGrade(c, 1, GOOD, 8);
+        CourseGrade courseGrade = new CourseGrade("cpsc 110", 1, GOOD, 8);
 
         instructor.addStudentGrade(s, courseGrade);
 
@@ -70,10 +69,8 @@ public class InstructorTest {
     @Test
     public void testAddStudentGradeMultipleTimes() {
         Student s = new Student("john");
-        Course c1 = new Course("cpsc 110", 4, instructor);
-        Course c2 = new Course("math 180", 3, instructor);
-        CourseGrade courseGrade1 = new CourseGrade(c1, 1, GOOD, 8);
-        CourseGrade courseGrade2 = new CourseGrade(c2, 2, EXCELLENT, 9);
+        CourseGrade courseGrade1 = new CourseGrade("cpsc 110", 1, GOOD, 8);
+        CourseGrade courseGrade2 = new CourseGrade("math 180", 2, EXCELLENT, 9);
 
         instructor.addStudentGrade(s, courseGrade1);
         instructor.addStudentGrade(s, courseGrade2);
@@ -87,5 +84,4 @@ public class InstructorTest {
     public void testToString() {
         assertEquals("harold", instructor.toString());
     }
-
 }

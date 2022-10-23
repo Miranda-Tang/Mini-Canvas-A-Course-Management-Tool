@@ -1,18 +1,20 @@
 package model;
 
-import java.util.HashSet;
-import java.util.Set;
+import persistence.Writable;
 
-// Represents a person with a name and a set of courses involved
-public class Personnel {
+import java.util.ArrayList;
+import java.util.List;
+
+// Represents a person with a name and a list of courses involved
+public abstract class Personnel implements Writable {
     protected final String name;
-    protected Set<Course> courses;
+    protected List<Course> courses;
 
     // REQUIRES: name != null
-    // EFFECTS: creates a new person with the given name and an empty set of courses
+    // EFFECTS: creates a new person with the given name and an empty list of courses
     public Personnel(String name) {
         this.name = name;
-        courses = new HashSet<>();
+        courses = new ArrayList<>();
     }
 
     // getters
@@ -20,8 +22,7 @@ public class Personnel {
         return name;
     }
 
-    public Set<Course> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
-
 }

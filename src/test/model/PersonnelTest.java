@@ -3,7 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,13 +12,12 @@ public class PersonnelTest {
 
     @BeforeEach
     public void runBefore() {
-        personnel = new Personnel("harold");
+        personnel = new Instructor("harold");
     }
 
     @Test
     public void testConstructor() {
         assertEquals("harold", personnel.getName());
-        assertEquals(new HashSet<>(), personnel.getCourses());
+        assertEquals(new ArrayList<>(), personnel.getCourses());
     }
-
 }

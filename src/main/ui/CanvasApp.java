@@ -1,15 +1,22 @@
 package ui;
 
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
-// Course Database application
+// Canvas application
 // CITATION: the structure of the following program is borrowed from TellerApp
-public class Canvas {
-    public final List<Course> courseList = new ArrayList<>();
-    private final List<Instructor> instructorList = new ArrayList<>();
-    private final List<Student> studentList = new ArrayList<>();
+public class CanvasApp {
+    private static final String JSON_STORE = "./data/canvas.json";
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
+    private final Scanner input;
+
+    private Canvas canvas = new Canvas();
 
     private static final int DEFAULT_COURSE_SIZE = 5;
 
@@ -22,10 +29,11 @@ public class Canvas {
     private static final String STUDENT_NOTE = "NOTE: The student name has to be in the following list:\n";
     private static final String GRADE_NOTE = "NOTE: Please enter an integer between 0 and 10.";
 
-    private Scanner input;
-
-    // EFFECTS: runs the course database application
-    public Canvas() {
+    // EFFECTS: runs the canvas application
+    public CanvasApp() throws FileNotFoundException {
+        input = new Scanner(System.in).useDelimiter("\n");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runCanvas();
     }
 
@@ -51,13 +59,16 @@ public class Canvas {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes course list, instructor list and student list in the database
+    // EFFECTS: if there exists canvas.json, load the data from canvas.json;
+    //          otherwise initializes course list, instructor list and student list in canvas
     private void initProgram() {
-        setInstructorAndCourseList();
-        setStudentList();
-        setCourseRegistration();
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
+        try {
+            loadCanvas();
+        } catch (IOException e) {
+            setInstructorAndCourseList();
+            setStudentList();
+            setCourseRegistration();
+        }
     }
 
     // MODIFIES: this
@@ -67,10 +78,10 @@ public class Canvas {
         Instructor tara = new Instructor("tara");
         Instructor eugenia = new Instructor("eugenia");
         Instructor jamie = new Instructor("jamie");
-        instructorList.add(gregor);
-        instructorList.add(tara);
-        instructorList.add(eugenia);
-        instructorList.add(jamie);
+        canvas.addInstructor(gregor);
+        canvas.addInstructor(tara);
+        canvas.addInstructor(eugenia);
+        canvas.addInstructor(jamie);
 
         Course cpsc110 = new Course("cpsc 110", 4, gregor);
         Course wrds150 = new Course("wrds 150", 3, tara);
@@ -79,13 +90,13 @@ public class Canvas {
         Course stat203 = new Course("stat 203", 3, eugenia);
         Course stat200 = new Course("stat 200", 3, eugenia);
         Course math180 = new Course("math 180", 6, jamie);
-        courseList.add(cpsc110);
-        courseList.add(wrds150);
-        courseList.add(engl301);
-        courseList.add(engl304);
-        courseList.add(stat203);
-        courseList.add(stat200);
-        courseList.add(math180);
+        canvas.addCourse(cpsc110);
+        canvas.addCourse(wrds150);
+        canvas.addCourse(engl301);
+        canvas.addCourse(engl304);
+        canvas.addCourse(stat203);
+        canvas.addCourse(stat200);
+        canvas.addCourse(math180);
     }
 
     // MODIFIES: this
@@ -98,26 +109,26 @@ public class Canvas {
         Student harold = new Student("harold");
         Student john = new Student("john");
         Student steve = new Student("steve");
-        studentList.add(miranda);
-        studentList.add(francis);
-        studentList.add(kate);
-        studentList.add(violet);
-        studentList.add(harold);
-        studentList.add(john);
-        studentList.add(steve);
+        canvas.addStudent(miranda);
+        canvas.addStudent(francis);
+        canvas.addStudent(kate);
+        canvas.addStudent(violet);
+        canvas.addStudent(harold);
+        canvas.addStudent(john);
+        canvas.addStudent(steve);
     }
 
     // MODIFIES: this
     // EFFECTS: initializes students' course registration
     private void setCourseRegistration() {
         Random random = new Random();
-        for (Course c : courseList) {
+        for (Course c : canvas.getCourseList()) {
             List<Integer> chosen = new ArrayList<>();
             for (int i = 0; i < DEFAULT_COURSE_SIZE; i++) {
-                int next = random.nextInt(studentList.size());
+                int next = random.nextInt(canvas.getStudentList().size());
                 if (!chosen.contains(next)) {
                     chosen.add(next);
-                    studentList.get(next).addCourse(c);
+                    c.addStudent(canvas.getStudentList().get(next));
                 }
             }
         }
@@ -145,9 +156,9 @@ public class Canvas {
 
     // EFFECTS: displays welcome interface to instructor and asks about the next move
     private void goInstructorInterface() {
-        Instructor instructor = spotInstructor(instructorList);
+        Instructor instructor = spotInstructor(canvas.getInstructorList());
 
-        System.out.println("\nHello " + instructor.getName()
+        System.out.println("\nHello " + instructor
                 + ", please find below a list of courses you are currently teaching:\n"
                 + instructor.getCourses());
 
@@ -192,7 +203,7 @@ public class Canvas {
     // REQUIRES: course != null
     // EFFECTS: prints the details of the given course
     private void printCourseDetail(Course course) {
-        System.out.println("\nHere are the details of " + course.getCourseID() + ":");
+        System.out.println("\nHere are the details of " + course + ":");
         System.out.println("Course: " + course.getCourseID()
                 + "\nCredits: " + course.getCredits()
                 + "\nInstructor: " + course.getInstructor()
@@ -205,23 +216,22 @@ public class Canvas {
     private void toAddStudentGrade(Instructor instructor) {
         Course c = spotCourse(instructor.getCourses());
         Student s = spotStudent(c.getStudents());
-        String name = s.getName();
 
-        System.out.println("\nHow many classes did " + name + " skip?");
+        System.out.println("\nHow many classes did " + s + " skip?");
         System.out.println(GRADE_NOTE);
         int skippedClass = input.nextInt();
-        System.out.println("\nPlease rank " + name + "'s project:");
+        System.out.println("\nPlease rank " + s + "'s project:");
         for (int i = 0; i < Rank.values().length - 1; i++) {
             System.out.println("\t" + Rank.values()[i].toString());
         }
         Rank projectRank = Rank.valueOf(nextCommand().toUpperCase());
-        System.out.println("\nHow many questions did " + name + " answer correctly in the exam?");
+        System.out.println("\nHow many questions did " + s + " answer correctly in the exam?");
         System.out.println(GRADE_NOTE);
         int correctQuestion = input.nextInt();
 
-        CourseGrade courseGrade = new CourseGrade(c, skippedClass, projectRank, correctQuestion);
+        CourseGrade courseGrade = new CourseGrade(c.getCourseID(), skippedClass, projectRank, correctQuestion);
         instructor.addStudentGrade(s, courseGrade);
-        System.out.println("\n" + name + "'s grades are added successfully!");
+        System.out.println("\n" + s + "'s grades are added successfully!");
     }
 
     // REQUIRES: instructor != null
@@ -238,26 +248,26 @@ public class Canvas {
         }
         Student s;
         if (command.equals("yes")) {
-            s = spotStudent(studentList);
+            s = spotStudent(canvas.getStudentList());
             if (c.getStudents().contains(s)) {
-                System.out.println("\n" + s.getName() + " is already in the course!");
+                System.out.println("\n" + s + " is already in the course!");
                 return;
             }
         } else {
             System.out.println("\nPlease enter the name of the student:");
             s = new Student(nextCommand());
-            studentList.add(s);
+            canvas.addStudent(s);
         }
         instructor.addStudentToCourse(s, c);
-        System.out.println("\n" + s.getName() + " is now registered in " + c.getCourseID() + ".");
+        System.out.println("\n" + s + " is now registered in " + c + ".");
     }
 
 
     // EFFECTS: displays welcome interface to student and asks about the next move
     private void goStudentInterface() {
-        Student student = spotStudent(studentList);
+        Student student = spotStudent(canvas.getStudentList());
 
-        System.out.println("\nHello " + student.getName()
+        System.out.println("\nHello " + student
                 + ", please find below a list of courses you are currently learning:\n"
                 + student.getCourses());
 
@@ -307,8 +317,8 @@ public class Canvas {
             System.out.println(courseGrade);
         }
         for (Course c : student.getCourses()) {
-            if (!student.getCoursesWithGrade().contains(c)) {
-                System.out.println("Course: " + c.getCourseID() + ", Grade: Not published");
+            if (!student.getCoursesWithGrade().contains(c.getCourseID())) {
+                System.out.println("Course: " + c + ", Grade: Not published");
             }
         }
     }
@@ -317,23 +327,23 @@ public class Canvas {
     // MODIFIES: this
     // EFFECTS: adds student to a certain course
     private void toRegisterNewCourse(Student student) {
-        Course c = spotCourse(courseList);
+        Course c = spotCourse(canvas.getCourseList());
         if (student.getCourses().contains(c)) {
             System.out.println("\nYou're already in the course!");
         } else {
-            student.addCourse(c);
-            System.out.println("\nYou're now registered in " + c.getCourseID() + ".");
+            c.addStudent(student);
+            System.out.println("\nYou're now registered in " + c + ".");
         }
     }
 
-    // REQUIRES: courseCollection != null
-    // EFFECTS: spots the target course in a collection of courses based on user input
-    private Course spotCourse(Collection<Course> courseCollection) {
+    // REQUIRES: courseList != null
+    // EFFECTS: spots the target course in a list of courses based on user input
+    private Course spotCourse(List<Course> courseList) {
         System.out.println("\nPlease enter the courseID of the course:");
-        System.out.println(COURSE_NOTE + courseCollection);
+        System.out.println(COURSE_NOTE + courseList);
         while (true) {
             String courseID = nextCommand();
-            for (Course c : courseCollection) {
+            for (Course c : courseList) {
                 if (courseID.equals(c.getCourseID())) {
                     return c;
                 }
@@ -342,14 +352,14 @@ public class Canvas {
         }
     }
 
-    // REQUIRES: instructorCollection != null
-    // EFFECTS: spots the target instructor in a collection of instructors based on user input
-    private Instructor spotInstructor(Collection<Instructor> instructorCollection) {
+    // REQUIRES: instructorList != null
+    // EFFECTS: spots the target instructor in a list of instructors based on user input
+    private Instructor spotInstructor(List<Instructor> instructorList) {
         System.out.println("\nPlease enter the name of the instructor:");
-        System.out.println(INSTRUCTOR_NOTE + instructorCollection);
+        System.out.println(INSTRUCTOR_NOTE + instructorList);
         while (true) {
             String name = nextCommand();
-            for (Instructor i : instructorCollection) {
+            for (Instructor i : instructorList) {
                 if (name.equals(i.getName())) {
                     return i;
                 }
@@ -358,14 +368,14 @@ public class Canvas {
         }
     }
 
-    // REQUIRES: studentCollection != null
-    // EFFECTS: spots the target student in a collection of students based on user input
-    private Student spotStudent(Collection<Student> studentCollection) {
+    // REQUIRES: studentList != null
+    // EFFECTS: spots the target student in a list of students based on user input
+    private Student spotStudent(List<Student> studentList) {
         System.out.println("\nPlease enter the name of the student:");
-        System.out.println(STUDENT_NOTE + studentCollection);
+        System.out.println(STUDENT_NOTE + studentList);
         while (true) {
             String name = nextCommand();
-            for (Student s : studentCollection) {
+            for (Student s : studentList) {
                 if (name.equals(s.getName())) {
                     return s;
                 }
@@ -383,9 +393,29 @@ public class Canvas {
         return command;
     }
 
-    //EFFECTS: stops receiving user input
+    //EFFECTS: stops receiving user input and saves the data to canvas.json
     public void endProgram() {
+        saveCanvas();
         System.out.println("\nThank you! Quitting...");
         input.close();
+    }
+
+    // EFFECTS: saves canvas to file
+    private void saveCanvas() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(canvas);
+            jsonWriter.close();
+            System.out.println("\nSaved the data to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads canvas from file
+    private void loadCanvas() throws IOException {
+        canvas = jsonReader.read();
+        System.out.println("Loaded the data from " + JSON_STORE);
     }
 }

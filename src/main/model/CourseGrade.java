@@ -1,9 +1,20 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a course and its grade comprised of three parts: attendance, project and exam
-public class CourseGrade {
-    private final Course course;
+public class CourseGrade implements Writable {
+    private final String courseID;
     private final int grade;
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("courseID", courseID);
+        json.put("grade", grade);
+        return json;
+    }
 
     // Represents student's attendance
     private static class Attendance implements Gradable {
@@ -73,25 +84,31 @@ public class CourseGrade {
     // REQUIRES: 0 <= skippedClass <= 10 && 0 <= correctQuestion <= 10
     // EFFECTS: creates a new course grade with the given number of skipped classes, project rank,
     //                                          and number of correct questions
-    public CourseGrade(Course course, int skippedClass, Rank projectRank, int correctQuestion) {
-        this.course = course;
+    public CourseGrade(String courseID, int skippedClass, Rank projectRank, int correctQuestion) {
+        this.courseID = courseID;
         Attendance attendance = new Attendance(skippedClass);
         Project project = new Project(projectRank);
         Exam exam = new Exam(correctQuestion);
         this.grade = (int) Math.round(0.2 * attendance.mark() + 0.3 * project.mark() + 0.5 * exam.mark());
     }
 
+    public CourseGrade(String courseID, int grade) {
+        this.courseID = courseID;
+        this.grade = grade;
+    }
+
     // getters
-    public Course getCourse() {
-        return course;
+    public String getCourseID() {
+        return courseID;
     }
 
     public int getGrade() {
         return grade;
     }
 
+    // EFFECTS: returns a string representation of course grade
     @Override
     public String toString() {
-        return "Course: " + course + ", Grade: " + grade;
+        return "Course: " + courseID + ", Grade: " + grade;
     }
 }

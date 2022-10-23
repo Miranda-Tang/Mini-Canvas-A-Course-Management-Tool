@@ -1,10 +1,12 @@
 package model;
 
-// Represents an instructor with a name and a set of courses he/she is teaching
+import org.json.JSONObject;
+
+// Represents an instructor with a name and a list of courses he/she is teaching
 public class Instructor extends Personnel {
 
     // REQUIRES: name != null
-    // EFFECTS: creates a new instructor with the given name and an empty set of courses
+    // EFFECTS: creates a new instructor with the given name and an empty list of courses
     public Instructor(String name) {
         super(name);
     }
@@ -14,7 +16,7 @@ public class Instructor extends Personnel {
     // MODIFIES: s, c
     // EFFECTS: adds student s to course c
     public void addStudentToCourse(Student s, Course c) {
-        s.addCourse(c);
+        c.addStudent(s);
     }
 
     // REQUIRES: s != null && courseGrade != null
@@ -24,8 +26,16 @@ public class Instructor extends Personnel {
         s.getCourseGrades().add(courseGrade);
     }
 
+    // EFFECTS: returns a string representation of instructor
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        return json;
     }
 }

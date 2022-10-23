@@ -1,44 +1,58 @@
 package model;
 
-import java.util.HashSet;
-import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-// Represents a student with a name, a set of courses he/she is learning and a set of grades of the courses taken
+import java.util.ArrayList;
+import java.util.List;
+
+// Represents a student with a name, a list of courses he/she is learning and a list of grades of the courses taken
 public class Student extends Personnel {
-    private final Set<CourseGrade> courseGrades;
+    private final List<CourseGrade> courseGrades;
 
     // REQUIRES: name != null
-    // EFFECTS: creates a new student with the given name, an empty set of courses and an empty set of course grades
+    // EFFECTS: creates a new student with the given name, an empty list of courses and an empty list of course grades
     public Student(String name) {
         super(name);
-        courseGrades = new HashSet<>();
+        courseGrades = new ArrayList<>();
     }
 
     // getters
-    public Set<CourseGrade> getCourseGrades() {
+    public List<CourseGrade> getCourseGrades() {
         return courseGrades;
     }
 
-    // EFFECTS: returns a set of courses the grades of which have been included in course grades list
-    public Set<Course> getCoursesWithGrade() {
-        Set<Course> res = new HashSet<>();
+    // EFFECTS: returns a list of courses the grades of which have been included in the course grades list
+    public List<String> getCoursesWithGrade() {
+        List<String> res = new ArrayList<>();
         for (CourseGrade cg : courseGrades) {
-            res.add(cg.getCourse());
+            res.add(cg.getCourseID());
         }
         return res;
     }
 
-    // REQUIRES: c != null
-    // MODIFIES: this, c
-    // EFFECTS: adds student s to course c
-    public void addCourse(Course c) {
-        courses.add(c);
-        c.addStudent(this);
-    }
-
+    // EFFECTS: returns a string representation of student
     @Override
     public String toString() {
         return name;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("courseGrades", courseGradesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns course grades in the course grades list as a JSON array
+    private JSONArray courseGradesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (CourseGrade cg : courseGrades) {
+            jsonArray.put(cg.toJson());
+        }
+
+        return jsonArray;
+    }
 }

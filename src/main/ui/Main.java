@@ -1,7 +1,13 @@
 package ui;
 
+import java.io.FileNotFoundException;
+
 public class Main {
     public static void main(String[] args) {
-        Canvas canvas = new Canvas();
+        try {
+            new CanvasApp();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to run application: file not found");
+        }
     }
 }

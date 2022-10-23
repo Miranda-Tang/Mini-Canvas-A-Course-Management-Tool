@@ -3,8 +3,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,17 +22,17 @@ class CourseTest {
         assertEquals("cpsc 110", course.getCourseID());
         assertEquals(4, course.getCredits());
         assertEquals("gregor", course.getInstructor().getName());
-        Set<Course> courses = new HashSet<>();
+        List<Course> courses = new ArrayList<>();
         courses.add(course);
         assertEquals(courses, course.getInstructor().getCourses());
-        assertEquals(new HashSet<>(), course.getStudents());
+        assertEquals(new ArrayList<>(), course.getStudents());
     }
 
     @Test
     public void testAddStudentOneTime() {
         Student s = new Student("john");
         course.addStudent(s);
-        Set<Student> students = course.getStudents();
+        List<Student> students = course.getStudents();
         assertEquals(1, students.size());
         assertTrue(students.contains(s));
     }
@@ -43,7 +43,7 @@ class CourseTest {
         course.addStudent(s1);
         Student s2 = new Student("harold");
         course.addStudent(s2);
-        Set<Student> students = course.getStudents();
+        List<Student> students = course.getStudents();
 
         assertEquals(2, students.size());
         assertTrue(students.contains(s1));
@@ -54,5 +54,4 @@ class CourseTest {
     public void testToString() {
         assertEquals("cpsc 110", course.toString());
     }
-
 }
