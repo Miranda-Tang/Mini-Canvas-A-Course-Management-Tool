@@ -50,6 +50,18 @@ class CourseTest {
     }
 
     @Test
+    public void testAddStudentFail() {
+        Student s1 = new Student("john");
+        course.addStudent(s1);
+        Student s2 = new Student("john");
+        course.addStudent(s2);
+
+        List<Student> students = course.getStudents();
+        assertEquals(1, students.size());
+        assertTrue(students.contains(s1));
+    }
+
+    @Test
     public void testToString() {
         assertEquals("cpsc 110", course.toString());
     }
@@ -65,21 +77,27 @@ class CourseTest {
         Student obj2 = new Student("miranda");
         assertNotEquals(course, obj2);
 
-        Course obj3 = new Course("cpsc 110", 4, new Instructor("felix"));
+        Course obj3 = new Course("cpsc 120", 4, new Instructor("gregor"));
         assertNotEquals(course, obj3);
 
-        Course obj4 = new Course("cpsc 110", 4, new Instructor("gregor"));
-        obj4.addStudent(new Student("john"));
+        Course obj4 = new Course("cpsc 110", 3, new Instructor("gregor"));
         assertNotEquals(course, obj4);
 
-        Course obj5 = new Course("cpsc 110", 4, new Instructor("gregor"));
-        obj5.addStudent(new Student("john"));
-        obj5.addStudent(new Student("steve"));
+        Course obj5 = new Course("cpsc 110", 4, new Instructor("felix"));
         assertNotEquals(course, obj5);
 
         Course obj6 = new Course("cpsc 110", 4, new Instructor("gregor"));
         obj6.addStudent(new Student("john"));
-        obj6.addStudent(new Student("harold"));
-        assertEquals(course, obj6);
+        assertNotEquals(course, obj6);
+
+        Course obj7 = new Course("cpsc 110", 4, new Instructor("gregor"));
+        obj7.addStudent(new Student("john"));
+        obj7.addStudent(new Student("steve"));
+        assertNotEquals(course, obj7);
+
+        Course obj8 = new Course("cpsc 110", 4, new Instructor("gregor"));
+        obj8.addStudent(new Student("john"));
+        obj8.addStudent(new Student("harold"));
+        assertEquals(course, obj8);
     }
 }

@@ -38,6 +38,19 @@ public class CanvasTest {
     }
 
     @Test
+    public void testAddCourseFail() {
+        Course c1 = new Course("cpsc 110", 4, new Instructor("gregor"));
+        Course c2 = new Course("cpsc 110", 4, new Instructor("gregor"));
+        canvas.addCourse(c1);
+        canvas.addCourse(c2);
+
+        List<Course> courses = new ArrayList<>();
+        courses.add(c1);
+
+        assertEquals(courses, canvas.getCourseList());
+    }
+
+    @Test
     public void testAddInstructor() {
         Instructor i1 = new Instructor("gregor");
         Instructor i2 = new Instructor("tara");
@@ -52,6 +65,19 @@ public class CanvasTest {
     }
 
     @Test
+    public void testAddInstructorFail() {
+        Instructor i1 = new Instructor("gregor");
+        Instructor i2 = new Instructor("gregor");
+        canvas.addInstructor(i1);
+        canvas.addInstructor(i2);
+
+        List<Instructor> instructors = new ArrayList<>();
+        instructors.add(i1);
+
+        assertEquals(instructors, canvas.getInstructorList());
+    }
+
+    @Test
     public void testAddStudent() {
         Student s1 = new Student("harold");
         Student s2 = new Student("john");
@@ -61,6 +87,19 @@ public class CanvasTest {
         List<Student> students = new ArrayList<>();
         students.add(s1);
         students.add(s2);
+
+        assertEquals(students, canvas.getStudentList());
+    }
+
+    @Test
+    public void testAddStudentFail() {
+        Student s1 = new Student("harold");
+        Student s2 = new Student("harold");
+        canvas.addStudent(s1);
+        canvas.addStudent(s2);
+
+        List<Student> students = new ArrayList<>();
+        students.add(s1);
 
         assertEquals(students, canvas.getStudentList());
     }
