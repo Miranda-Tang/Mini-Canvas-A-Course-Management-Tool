@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 import static model.Rank.EXCELLENT;
 import static model.Rank.GOOD;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InstructorTest {
     private Instructor instructor;
+    private Instructor obj1;
 
     @BeforeEach
     public void runBefore() {
@@ -83,5 +83,20 @@ public class InstructorTest {
     @Test
     public void testToString() {
         assertEquals("harold", instructor.toString());
+    }
+
+    @Test
+    public void testEquals() {
+        Instructor obj1 = instructor;
+        assertEquals(instructor, obj1);
+
+        Student obj2 = new Student("miranda");
+        assertNotEquals(instructor, obj2);
+
+        Instructor obj3 = new Instructor("john");
+        assertNotEquals(instructor, obj3);
+
+        Instructor obj4 = new Instructor("harold");
+        assertEquals(instructor, obj4);
     }
 }

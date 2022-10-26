@@ -8,14 +8,6 @@ public class CourseGrade implements Writable {
     private final String courseID;
     private final int grade;
 
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("courseID", courseID);
-        json.put("grade", grade);
-        return json;
-    }
-
     // Represents student's attendance
     private static class Attendance implements Gradable {
         private static final int PUNISHMENT = 5;
@@ -92,6 +84,7 @@ public class CourseGrade implements Writable {
         this.grade = (int) Math.round(0.2 * attendance.mark() + 0.3 * project.mark() + 0.5 * exam.mark());
     }
 
+    // EFFECTS: creates a new course grade with the given grade
     public CourseGrade(String courseID, int grade) {
         this.courseID = courseID;
         this.grade = grade;
@@ -110,5 +103,25 @@ public class CourseGrade implements Writable {
     @Override
     public String toString() {
         return "Course: " + courseID + ", Grade: " + grade;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof CourseGrade)) {
+            return false;
+        }
+        CourseGrade cg = (CourseGrade) obj;
+        return courseID.equals(cg.getCourseID()) && grade == cg.getGrade();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("courseID", courseID);
+        json.put("grade", grade);
+        return json;
     }
 }

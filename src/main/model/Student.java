@@ -38,6 +38,29 @@ public class Student extends Personnel {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Student)) {
+            return false;
+        }
+        Student s = (Student) obj;
+        if (!name.equals(s.getName())) {
+            return false;
+        }
+        if (courseGrades.size() != s.getCourseGrades().size()) {
+            return false;
+        }
+        for (CourseGrade cg : courseGrades) {
+            if (!s.getCourseGrades().contains(cg)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

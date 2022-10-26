@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static model.Rank.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class CourseGradeTest {
     private CourseGrade courseGrade1;
@@ -47,5 +48,20 @@ public class CourseGradeTest {
     public void testToString() {
         assertEquals("Course: cpsc 110, Grade: " + (int) Math.round(0.2 * 95 + 0.3 * 90 + 0.5 * 80),
                 courseGrade1.toString());
+    }
+
+    @Test
+    public void testEquals() {
+        CourseGrade obj1 = courseGrade6;
+        assertEquals(obj1, courseGrade6);
+
+        Course obj2 = new Course("cpsc 110", 4, new Instructor("gregor"));
+        assertNotEquals(courseGrade6, obj2);
+
+        CourseGrade obj3 = new CourseGrade("cpsc 110", 90);
+        assertNotEquals(courseGrade6, obj3);
+
+        CourseGrade obj4 = new CourseGrade("cpsc 110", 92);
+        assertEquals(courseGrade6, obj4);
     }
 }

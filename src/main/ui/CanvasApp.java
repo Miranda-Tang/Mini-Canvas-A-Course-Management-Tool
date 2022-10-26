@@ -11,7 +11,7 @@ import java.util.*;
 // Canvas application
 // CITATION: the structure of the following program is borrowed from TellerApp
 public class CanvasApp {
-    private static final String JSON_STORE = "./data/canvas.json";
+    private static final String JSON_STORE = "./data/Canvas.json";
     private final JsonWriter jsonWriter;
     private final JsonReader jsonReader;
     private final Scanner input;
@@ -59,7 +59,7 @@ public class CanvasApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: if there exists canvas.json, load the data from canvas.json;
+    // EFFECTS: if there exists testReaderGeneralCanvas.json, load the data from testReaderGeneralCanvas.json;
     //          otherwise initializes course list, instructor list and student list in canvas
     private void initProgram() {
         try {
@@ -393,7 +393,7 @@ public class CanvasApp {
         return command;
     }
 
-    //EFFECTS: stops receiving user input and saves the data to canvas.json
+    //EFFECTS: stops receiving user input and saves the data to testReaderGeneralCanvas.json
     public void endProgram() {
         saveCanvas();
         System.out.println("\nThank you! Quitting...");

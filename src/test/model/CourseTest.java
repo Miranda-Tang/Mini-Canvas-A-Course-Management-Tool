@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CourseTest {
     private Course course;
@@ -53,5 +52,34 @@ class CourseTest {
     @Test
     public void testToString() {
         assertEquals("cpsc 110", course.toString());
+    }
+
+    @Test
+    public void testEquals() {
+        course.addStudent(new Student("john"));
+        course.addStudent(new Student("harold"));
+
+        Course obj1 = course;
+        assertEquals(course, obj1);
+
+        Student obj2 = new Student("miranda");
+        assertNotEquals(course, obj2);
+
+        Course obj3 = new Course("cpsc 110", 4, new Instructor("felix"));
+        assertNotEquals(course, obj3);
+
+        Course obj4 = new Course("cpsc 110", 4, new Instructor("gregor"));
+        obj4.addStudent(new Student("john"));
+        assertNotEquals(course, obj4);
+
+        Course obj5 = new Course("cpsc 110", 4, new Instructor("gregor"));
+        obj5.addStudent(new Student("john"));
+        obj5.addStudent(new Student("steve"));
+        assertNotEquals(course, obj5);
+
+        Course obj6 = new Course("cpsc 110", 4, new Instructor("gregor"));
+        obj6.addStudent(new Student("john"));
+        obj6.addStudent(new Student("harold"));
+        assertEquals(course, obj6);
     }
 }
