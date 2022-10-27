@@ -11,7 +11,7 @@ import java.util.*;
 // Canvas application
 // CITATION: the structure of the following program is borrowed from TellerApp
 public class CanvasApp {
-    private static final String JSON_STORE = "./data/Canvas.json";
+    private static final String JSON_STORE = "./data/canvas.json";
     private final JsonWriter jsonWriter;
     private final JsonReader jsonReader;
     private final Scanner input;
@@ -59,7 +59,7 @@ public class CanvasApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: if there exists testReaderGeneralCanvas.json, load the data from testReaderGeneralCanvas.json;
+    // EFFECTS: if there exists canvas.json, load the data from canvas.json;
     //          otherwise initializes course list, instructor list and student list in canvas
     private void initProgram() {
         try {
@@ -217,16 +217,24 @@ public class CanvasApp {
         Course c = spotCourse(instructor.getCourses());
         Student s = spotStudent(c.getStudents());
 
-        System.out.println("\nHow many classes did " + s + " skip?");
-        System.out.println(GRADE_NOTE);
+        System.out.println("\nHow many classes did " + s + " skip?\n" + GRADE_NOTE);
         int skippedClass = input.nextInt();
+
         System.out.println("\nPlease rank " + s + "'s project:");
         for (int i = 0; i < Rank.values().length - 1; i++) {
             System.out.println("\t" + Rank.values()[i].toString());
         }
-        Rank projectRank = Rank.valueOf(nextCommand().toUpperCase());
-        System.out.println("\nHow many questions did " + s + " answer correctly in the exam?");
-        System.out.println(GRADE_NOTE);
+        Rank projectRank;
+        while (true) {
+            try {
+                projectRank = Rank.valueOf(nextCommand().toUpperCase());
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(NOT_VALID_PROMPT);
+            }
+        }
+
+        System.out.println("\nHow many questions did " + s + " answer correctly in the exam?\n" + GRADE_NOTE);
         int correctQuestion = input.nextInt();
 
         CourseGrade courseGrade = new CourseGrade(c.getCourseID(), skippedClass, projectRank, correctQuestion);

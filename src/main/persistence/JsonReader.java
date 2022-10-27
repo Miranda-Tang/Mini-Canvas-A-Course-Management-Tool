@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 // Represents a reader that reads canvas from JSON data stored in file
+// CITATION: the structure and contents of the following program are borrowed from JsonSerializationDemo
 public class JsonReader {
     private final String source;
 

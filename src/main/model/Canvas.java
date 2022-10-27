@@ -14,7 +14,8 @@ public class Canvas implements Writable {
     private final List<Student> studentList = new ArrayList<>();
 
     // MODIFIES: this
-    // EFFECTS: adds course c to the existing list of courses
+    // EFFECTS: adds course c to the existing list of courses if c is not in the list;
+    //          otherwise, do nothing
     public void addCourse(Course c) {
         if (!courseList.contains(c)) {
             courseList.add(c);
@@ -22,7 +23,8 @@ public class Canvas implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds instructor i to the existing list of instructors
+    // EFFECTS: adds instructor i to the existing list of instructors if i is not in the list;
+    //          otherwise, do nothing
     public void addInstructor(Instructor i) {
         if (!instructorList.contains(i)) {
             instructorList.add(i);
@@ -30,7 +32,8 @@ public class Canvas implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds student s to the existing list of students
+    // EFFECTS: adds student s to the existing list of students if s is not in the list;
+    //          otherwise, do nothing
     public void addStudent(Student s) {
         if (!studentList.contains(s)) {
             studentList.add(s);

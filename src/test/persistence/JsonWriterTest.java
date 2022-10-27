@@ -15,7 +15,7 @@ public class JsonWriterTest extends JsonTest {
             Canvas canvas = new Canvas();
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
-            fail("IOException was expected");
+            fail("IOException expected");
         } catch (IOException e) {
             // pass
 
@@ -32,6 +32,7 @@ public class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralCanvas.json");
             Canvas testCanvas = reader.read();
+
             checkCanvasInstructors(expectedCanvas, testCanvas);
             checkCanvasStudents(expectedCanvas, testCanvas);
             checkCanvasCourses(expectedCanvas, testCanvas);

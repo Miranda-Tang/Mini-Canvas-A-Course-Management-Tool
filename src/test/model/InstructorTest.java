@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class InstructorTest {
     private Instructor instructor;
-    private Instructor obj1;
 
     @BeforeEach
     public void runBefore() {

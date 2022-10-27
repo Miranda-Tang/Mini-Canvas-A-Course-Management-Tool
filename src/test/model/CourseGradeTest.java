@@ -23,9 +23,9 @@ public class CourseGradeTest {
         courseGrade3 = new CourseGrade(courseID, 1, ADEQUATE, 8);
         courseGrade4 = new CourseGrade(courseID, 1, INSUFFICIENT, 8);
         courseGrade5 = new CourseGrade(courseID, 1, UNACCEPTABLE, 8);
-        CourseGrade invalidCourseGrade = new CourseGrade(courseID, 1, INVALID, 8);
-
         courseGrade6 = new CourseGrade(courseID, 92);
+
+        CourseGrade invalidCourseGrade = new CourseGrade(courseID, 1, INVALID, 8);
     }
 
     @Test

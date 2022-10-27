@@ -105,6 +105,7 @@ public class CourseGrade implements Writable {
         return "Course: " + courseID + ", Grade: " + grade;
     }
 
+    // EFFECTS: returns true if the two course grades are considered equivalent, false otherwise
     @Override
     public boolean equals(Object obj) {
         if (obj == this) {

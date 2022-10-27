@@ -58,6 +58,7 @@ public class Course implements Writable {
         return courseID;
     }
 
+    // EFFECTS: returns true if the two courses are considered equivalent, false otherwise
     @Override
     public boolean equals(Object obj) {
         if (obj == this) {

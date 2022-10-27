@@ -1,0 +1,296 @@
+{
+    "instructorList": [
+        {"name": "gregor"},
+        {"name": "tara"},
+        {"name": "eugenia"},
+        {"name": "jamie"}
+    ],
+    "studentList": [
+        {
+            "name": "miranda",
+            "courseGrades": []
+        },
+        {
+            "name": "francis",
+            "courseGrades": []
+        },
+        {
+            "name": "kate",
+            "courseGrades": [{
+                "grade": 85,
+                "courseID": "engl 304"
+            }]
+        },
+        {
+            "name": "violet",
+            "courseGrades": [{
+                "grade": 82,
+                "courseID": "wrds 150"
+            }]
+        },
+        {
+            "name": "harold",
+            "courseGrades": [{
+                "grade": 87,
+                "courseID": "cpsc 110"
+            }]
+        },
+        {
+            "name": "john",
+            "courseGrades": []
+        },
+        {
+            "name": "steve",
+            "courseGrades": [
+                {
+                    "grade": 84,
+                    "courseID": "cpsc 110"
+                },
+                {
+                    "grade": 90,
+                    "courseID": "wrds 150"
+                }
+            ]
+        },
+        {
+            "name": "chloe",
+            "courseGrades": [{
+                "grade": 80,
+                "courseID": "stat 200"
+            }]
+        }
+    ],
+    "courseList": [
+        {
+            "instructor": {"name": "gregor"},
+            "credits": 4,
+            "students": [
+                {
+                    "name": "harold",
+                    "courseGrades": [{
+                        "grade": 87,
+                        "courseID": "cpsc 110"
+                    }]
+                },
+                {
+                    "name": "steve",
+                    "courseGrades": [
+                        {
+                            "grade": 84,
+                            "courseID": "cpsc 110"
+                        },
+                        {
+                            "grade": 90,
+                            "courseID": "wrds 150"
+                        }
+                    ]
+                },
+                {
+                    "name": "kate",
+                    "courseGrades": [{
+                        "grade": 85,
+                        "courseID": "engl 304"
+                    }]
+                },
+                {
+                    "name": "john",
+                    "courseGrades": []
+                },
+                {
+                    "name": "chloe",
+                    "courseGrades": [{
+                        "grade": 80,
+                        "courseID": "stat 200"
+                    }]
+                }
+            ],
+            "courseID": "cpsc 110"
+        },
+        {
+            "instructor": {"name": "tara"},
+            "credits": 3,
+            "students": [
+                {
+                    "name": "steve",
+                    "courseGrades": [
+                        {
+                            "grade": 84,
+                            "courseID": "cpsc 110"
+                        },
+                        {
+                            "grade": 90,
+                            "courseID": "wrds 150"
+                        }
+                    ]
+                },
+                {
+                    "name": "john",
+                    "courseGrades": []
+                },
+                {
+                    "name": "violet",
+                    "courseGrades": [{
+                        "grade": 82,
+                        "courseID": "wrds 150"
+                    }]
+                },
+                {
+                    "name": "chloe",
+                    "courseGrades": [{
+                        "grade": 80,
+                        "courseID": "stat 200"
+                    }]
+                }
+            ],
+            "courseID": "wrds 150"
+        },
+        {
+            "instructor": {"name": "tara"},
+            "credits": 4,
+            "students": [
+                {
+                    "name": "miranda",
+                    "courseGrades": []
+                },
+                {
+                    "name": "francis",
+                    "courseGrades": []
+                },
+                {
+                    "name": "john",
+                    "courseGrades": []
+                },
+                {
+                    "name": "harold",
+                    "courseGrades": [{
+                        "grade": 87,
+                        "courseID": "cpsc 110"
+                    }]
+                }
+            ],
+            "courseID": "engl 301"
+        },
+        {
+            "instructor": {"name": "tara"},
+            "credits": 4,
+            "students": [
+                {
+                    "name": "miranda",
+                    "courseGrades": []
+                },
+                {
+                    "name": "francis",
+                    "courseGrades": []
+                },
+                {
+                    "name": "john",
+                    "courseGrades": []
+                },
+                {
+                    "name": "kate",
+                    "courseGrades": [{
+                        "grade": 85,
+                        "courseID": "engl 304"
+                    }]
+                }
+            ],
+            "courseID": "engl 304"
+        },
+        {
+            "instructor": {"name": "eugenia"},
+            "credits": 3,
+            "students": [
+                {
+                    "name": "francis",
+                    "courseGrades": []
+                },
+                {
+                    "name": "kate",
+                    "courseGrades": [{
+                        "grade": 85,
+                        "courseID": "engl 304"
+                    }]
+                },
+                {
+                    "name": "harold",
+                    "courseGrades": [{
+                        "grade": 87,
+                        "courseID": "cpsc 110"
+                    }]
+                }
+            ],
+            "courseID": "stat 203"
+        },
+        {
+            "instructor": {"name": "eugenia"},
+            "credits": 3,
+            "students": [
+                {
+                    "name": "john",
+                    "courseGrades": []
+                },
+                {
+                    "name": "francis",
+                    "courseGrades": []
+                },
+                {
+                    "name": "miranda",
+                    "courseGrades": []
+                },
+                {
+                    "name": "violet",
+                    "courseGrades": [{
+                        "grade": 82,
+                        "courseID": "wrds 150"
+                    }]
+                },
+                {
+                    "name": "chloe",
+                    "courseGrades": [{
+                        "grade": 80,
+                        "courseID": "stat 200"
+                    }]
+                }
+            ],
+            "courseID": "stat 200"
+        },
+        {
+            "instructor": {"name": "jamie"},
+            "credits": 6,
+            "students": [
+                {
+                    "name": "francis",
+                    "courseGrades": []
+                },
+                {
+                    "name": "violet",
+                    "courseGrades": [{
+                        "grade": 82,
+                        "courseID": "wrds 150"
+                    }]
+                },
+                {
+                    "name": "harold",
+                    "courseGrades": [{
+                        "grade": 87,
+                        "courseID": "cpsc 110"
+                    }]
+                },
+                {
+                    "name": "steve",
+                    "courseGrades": [
+                        {
+                            "grade": 84,
+                            "courseID": "cpsc 110"
+                        },
+                        {
+                            "grade": 90,
+                            "courseID": "wrds 150"
+                        }
+                    ]
+                }
+            ],
+            "courseID": "math 180"
+        }
+    ]
+}

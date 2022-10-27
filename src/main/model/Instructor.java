@@ -32,6 +32,7 @@ public class Instructor extends Personnel {
         return name;
     }
 
+    // EFFECTS: returns true if the two instructors are considered equivalent, false otherwise
     @Override
     public boolean equals(Object obj) {
         if (obj == this) {
