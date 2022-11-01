@@ -1,0 +1,239 @@
+{
+  "instructorList": [
+    {
+      "name": "gregor"
+    },
+    {
+      "name": "tara"
+    },
+    {
+      "name": "eugenia"
+    },
+    {
+      "name": "jamie"
+    }
+  ],
+  "studentList": [
+    {
+      "name": "miranda",
+      "courseGrades": []
+    },
+    {
+      "name": "francis",
+      "courseGrades": []
+    },
+    {
+      "name": "kate",
+      "courseGrades": []
+    },
+    {
+      "name": "violet",
+      "courseGrades": []
+    },
+    {
+      "name": "harold",
+      "courseGrades": []
+    },
+    {
+      "name": "john",
+      "courseGrades": [
+        {
+          "grade": 87,
+          "courseID": "cpsc 110"
+        }
+      ]
+    },
+    {
+      "name": "steve",
+      "courseGrades": []
+    }
+  ],
+  "courseList": [
+    {
+      "instructor": {
+        "name": "gregor"
+      },
+      "credits": 4,
+      "students": [
+        {
+          "name": "harold",
+          "courseGrades": []
+        },
+        {
+          "name": "miranda",
+          "courseGrades": []
+        },
+        {
+          "name": "violet",
+          "courseGrades": []
+        },
+        {
+          "name": "john",
+          "courseGrades": [
+            {
+              "grade": 87,
+              "courseID": "cpsc 110"
+            }
+          ]
+        }
+      ],
+      "courseID": "cpsc 110"
+    },
+    {
+      "instructor": {
+        "name": "tara"
+      },
+      "credits": 3,
+      "students": [
+        {
+          "name": "francis",
+          "courseGrades": []
+        },
+        {
+          "name": "steve",
+          "courseGrades": []
+        },
+        {
+          "name": "harold",
+          "courseGrades": []
+        },
+        {
+          "name": "miranda",
+          "courseGrades": []
+        }
+      ],
+      "courseID": "wrds 150"
+    },
+    {
+      "instructor": {
+        "name": "tara"
+      },
+      "credits": 4,
+      "students": [
+        {
+          "name": "steve",
+          "courseGrades": []
+        },
+        {
+          "name": "john",
+          "courseGrades": [
+            {
+              "grade": 87,
+              "courseID": "cpsc 110"
+            }
+          ]
+        },
+        {
+          "name": "kate",
+          "courseGrades": []
+        }
+      ],
+      "courseID": "engl 301"
+    },
+    {
+      "instructor": {
+        "name": "tara"
+      },
+      "credits": 4,
+      "students": [
+        {
+          "name": "violet",
+          "courseGrades": []
+        },
+        {
+          "name": "steve",
+          "courseGrades": []
+        },
+        {
+          "name": "harold",
+          "courseGrades": []
+        },
+        {
+          "name": "francis",
+          "courseGrades": []
+        },
+        {
+          "name": "kate",
+          "courseGrades": []
+        }
+      ],
+      "courseID": "engl 304"
+    },
+    {
+      "instructor": {
+        "name": "eugenia"
+      },
+      "credits": 3,
+      "students": [
+        {
+          "name": "steve",
+          "courseGrades": []
+        },
+        {
+          "name": "harold",
+          "courseGrades": []
+        },
+        {
+          "name": "john",
+          "courseGrades": [
+            {
+              "grade": 87,
+              "courseID": "cpsc 110"
+            }
+          ]
+        }
+      ],
+      "courseID": "stat 203"
+    },
+    {
+      "instructor": {
+        "name": "eugenia"
+      },
+      "credits": 3,
+      "students": [
+        {
+          "name": "francis",
+          "courseGrades": []
+        },
+        {
+          "name": "miranda",
+          "courseGrades": []
+        },
+        {
+          "name": "harold",
+          "courseGrades": []
+        },
+        {
+          "name": "kate",
+          "courseGrades": []
+        }
+      ],
+      "courseID": "stat 200"
+    },
+    {
+      "instructor": {
+        "name": "jamie"
+      },
+      "credits": 6,
+      "students": [
+        {
+          "name": "violet",
+          "courseGrades": []
+        },
+        {
+          "name": "kate",
+          "courseGrades": []
+        },
+        {
+          "name": "francis",
+          "courseGrades": []
+        },
+        {
+          "name": "harold",
+          "courseGrades": []
+        }
+      ],
+      "courseID": "math 180"
+    }
+  ]
+}
