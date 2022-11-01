@@ -12,7 +12,7 @@ Possible features include:
 - Entering students' grades of each course;
 - Visualizing each student's grades in a dashboard.
 
-The target is to be able to combine course information and student data for a "full picture" of the course and its activity. Through this project I expect to discover valuable connections between CS and my previous studies in the field of education.
+The target is to be able to combine course information and student data for a **full picture** of the course and its activity. Through this project I expect to discover valuable connections between CS and my previous studies in the field of education.
 
 ## 🚀 User Stories
 
