@@ -4,6 +4,7 @@ import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class CanvasApp {
     private void runCanvas() {
         boolean keepGoing = true;
 
-        initProgram();
+        startProgram();
 
         while (keepGoing) {
             displayMenu();
@@ -58,16 +59,31 @@ public class CanvasApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: if there exists canvas.json, load the data from canvas.json;
+    // EFFECTS: if there exists canvas.json and the user wants to load data, loads the data from canvas.json;
     //          otherwise initializes course list, instructor list and student list in canvas
-    private void initProgram() {
-        try {
-            loadCanvas();
-        } catch (IOException e) {
-            setInstructorAndCourseList();
-            setStudentList();
-            setCourseRegistration();
+    private void startProgram() {
+        if (new File(JSON_STORE).exists()) {
+            System.out.println("Would you like to load existing Canvas records? Please enter yes/no.");
+            String command = nextCommand();
+            while (!command.equals("yes") && !command.equals("no")) {
+                System.out.println(NOT_VALID_PROMPT);
+                command = nextCommand();
+            }
+            if (command.equals("yes")) {
+                loadCanvas();
+                return;
+            }
         }
+        initCanvas();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: initializes course list, instructor list and student list in canvas
+    public void initCanvas() {
+        System.out.println("New Canvas has been created.");
+        setInstructorAndCourseList();
+        setStudentList();
+        setCourseRegistration();
     }
 
     // MODIFIES: this
@@ -402,7 +418,15 @@ public class CanvasApp {
 
     //EFFECTS: stops receiving user input and saves the data to testReaderGeneralCanvas.json
     public void endProgram() {
-        saveCanvas();
+        System.out.println("\nWould you like to save the changes to Canvas records? Please enter yes/no.");
+        String command = nextCommand();
+        while (!command.equals("yes") && !command.equals("no")) {
+            System.out.println(NOT_VALID_PROMPT);
+            command = nextCommand();
+        }
+        if (command.equals("yes")) {
+            saveCanvas();
+        }
         System.out.println("\nThank you! Quitting...");
         input.close();
     }
@@ -421,8 +445,12 @@ public class CanvasApp {
 
     // MODIFIES: this
     // EFFECTS: loads canvas from file
-    private void loadCanvas() throws IOException {
-        canvas = jsonReader.read();
-        System.out.println("Loaded the data from " + JSON_STORE);
+    private void loadCanvas() {
+        try {
+            canvas = jsonReader.read();
+            System.out.println("Loaded the data from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }

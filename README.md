@@ -23,5 +23,5 @@ The target is to be able to combine course information and student data for a **
 - As a student, I want to be able to view the list of courses I'm learning.
 - As a student, I want to be able to view my grades of all the courses taken.
 - As a student, I want to be able to register in a new course.
-- As an instructor or a student, I want to be able to save the course information to file automatically.
-- As an instructor or a student, I want to be able to load the course information from file automatically.
+- As an instructor or a student, I want to be able to save the Canvas records to file.
+- As an instructor or a student, I want to be able to load the Canvas records from file.
