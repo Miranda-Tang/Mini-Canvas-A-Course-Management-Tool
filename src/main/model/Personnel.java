@@ -4,6 +4,7 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 // Represents a person with a name and a list of courses involved
 public abstract class Personnel implements Writable {
@@ -24,5 +25,24 @@ public abstract class Personnel implements Writable {
 
     public List<Course> getCourses() {
         return courses;
+    }
+
+    // EFFECTS: returns a string representation of person
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Personnel personnel = (Personnel) o;
+        return Objects.equals(getName(), personnel.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 }

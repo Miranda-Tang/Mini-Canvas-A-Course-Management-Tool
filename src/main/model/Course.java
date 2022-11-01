@@ -6,6 +6,7 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 // Represents a course having an ID, credits, an instructor and a list of students
 public class Course implements Writable {
@@ -60,26 +61,16 @@ public class Course implements Writable {
 
     // EFFECTS: returns true if the two courses are considered equivalent, false otherwise
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Course)) {
-            return false;
-        }
-        Course c = (Course) obj;
-        if (!(courseID.equals(c.getCourseID()) && credits == c.getCredits() && instructor.equals(c.getInstructor()))) {
-            return false;
-        }
-        if (students.size() != c.getStudents().size()) {
-            return false;
-        }
-        for (Student s : students) {
-            if (!c.getStudents().contains(s)) {
-                return false;
-            }
-        }
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return getCredits() == course.getCredits() && Objects.equals(getCourseID(), course.getCourseID()) && Objects.equals(getInstructor(), course.getInstructor()) && Objects.equals(getStudents(), course.getStudents());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCourseID(), getCredits(), getInstructor(), getStudents());
     }
 
     @Override

@@ -99,5 +99,6 @@ class CourseTest {
         obj8.addStudent(new Student("john"));
         obj8.addStudent(new Student("harold"));
         assertEquals(course, obj8);
+        assertEquals(course.hashCode(), obj8.hashCode());
     }
 }

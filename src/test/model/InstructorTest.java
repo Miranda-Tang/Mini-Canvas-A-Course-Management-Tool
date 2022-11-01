@@ -97,5 +97,6 @@ public class InstructorTest {
 
         Instructor obj4 = new Instructor("harold");
         assertEquals(instructor, obj4);
+        assertEquals(instructor.hashCode(), obj4.hashCode());
     }
 }

@@ -16,10 +16,16 @@
         },
         {
             "name": "kate",
-            "courseGrades": [{
-                "grade": 85,
-                "courseID": "engl 304"
-            }]
+            "courseGrades": [
+                {
+                    "grade": 85,
+                    "courseID": "engl 304"
+                },
+                {
+                    "grade": 78,
+                    "courseID": "stat 203"
+                }
+            ]
         },
         {
             "name": "violet",
@@ -87,10 +93,16 @@
                 },
                 {
                     "name": "kate",
-                    "courseGrades": [{
-                        "grade": 85,
-                        "courseID": "engl 304"
-                    }]
+                    "courseGrades": [
+                        {
+                            "grade": 85,
+                            "courseID": "engl 304"
+                        },
+                        {
+                            "grade": 78,
+                            "courseID": "stat 203"
+                        }
+                    ]
                 },
                 {
                     "name": "john",
@@ -188,10 +200,16 @@
                 },
                 {
                     "name": "kate",
-                    "courseGrades": [{
-                        "grade": 85,
-                        "courseID": "engl 304"
-                    }]
+                    "courseGrades": [
+                        {
+                            "grade": 85,
+                            "courseID": "engl 304"
+                        },
+                        {
+                            "grade": 78,
+                            "courseID": "stat 203"
+                        }
+                    ]
                 }
             ],
             "courseID": "engl 304"
@@ -206,16 +224,29 @@
                 },
                 {
                     "name": "kate",
-                    "courseGrades": [{
-                        "grade": 85,
-                        "courseID": "engl 304"
-                    }]
+                    "courseGrades": [
+                        {
+                            "grade": 85,
+                            "courseID": "engl 304"
+                        },
+                        {
+                            "grade": 78,
+                            "courseID": "stat 203"
+                        }
+                    ]
                 },
                 {
                     "name": "harold",
                     "courseGrades": [{
                         "grade": 87,
                         "courseID": "cpsc 110"
+                    }]
+                },
+                {
+                    "name": "violet",
+                    "courseGrades": [{
+                        "grade": 82,
+                        "courseID": "wrds 150"
                     }]
                 }
             ],

@@ -26,24 +26,6 @@ public class Instructor extends Personnel {
         s.getCourseGrades().add(courseGrade);
     }
 
-    // EFFECTS: returns a string representation of instructor
-    @Override
-    public String toString() {
-        return name;
-    }
-
-    // EFFECTS: returns true if the two instructors are considered equivalent, false otherwise
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Instructor)) {
-            return false;
-        }
-        return name.equals(((Instructor) obj).name);
-    }
-
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

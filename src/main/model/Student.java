@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 // Represents a student with a name, a list of courses he/she is learning and a list of grades of the courses taken
 public class Student extends Personnel {
@@ -31,34 +32,19 @@ public class Student extends Personnel {
         return res;
     }
 
-    // EFFECTS: returns a string representation of student
-    @Override
-    public String toString() {
-        return name;
-    }
-
     // EFFECTS: returns true if the two students are considered equivalent, false otherwise
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Student)) {
-            return false;
-        }
-        Student s = (Student) obj;
-        if (!name.equals(s.getName())) {
-            return false;
-        }
-        if (courseGrades.size() != s.getCourseGrades().size()) {
-            return false;
-        }
-        for (CourseGrade cg : courseGrades) {
-            if (!s.getCourseGrades().contains(cg)) {
-                return false;
-            }
-        }
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Student student = (Student) o;
+        return Objects.equals(getCourseGrades(), student.getCourseGrades());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getCourseGrades());
     }
 
     @Override

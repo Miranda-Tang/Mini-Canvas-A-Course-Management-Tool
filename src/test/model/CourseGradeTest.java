@@ -63,5 +63,6 @@ public class CourseGradeTest {
 
         CourseGrade obj4 = new CourseGrade("cpsc 110", 92);
         assertEquals(courseGrade6, obj4);
+        assertEquals(courseGrade6.hashCode(), obj4.hashCode());
     }
 }

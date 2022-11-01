@@ -3,6 +3,8 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.util.Objects;
+
 // Represents a course and its grade comprised of three parts: attendance, project and exam
 public class CourseGrade implements Writable {
     private final String courseID;
@@ -107,15 +109,16 @@ public class CourseGrade implements Writable {
 
     // EFFECTS: returns true if the two course grades are considered equivalent, false otherwise
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof CourseGrade)) {
-            return false;
-        }
-        CourseGrade cg = (CourseGrade) obj;
-        return courseID.equals(cg.getCourseID()) && grade == cg.getGrade();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CourseGrade that = (CourseGrade) o;
+        return getGrade() == that.getGrade() && Objects.equals(getCourseID(), that.getCourseID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCourseID(), getGrade());
     }
 
     @Override

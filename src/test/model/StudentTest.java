@@ -73,5 +73,6 @@ public class StudentTest {
         i.addStudentToCourse(obj6, c);
         i.addStudentGrade(obj6, new CourseGrade(c.getCourseID(), 90));
         assertEquals(student, obj6);
+        assertEquals(student.hashCode(), obj6.hashCode());
     }
 }
