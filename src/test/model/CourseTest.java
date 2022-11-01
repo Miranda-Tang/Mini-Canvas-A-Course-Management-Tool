@@ -74,6 +74,9 @@ class CourseTest {
         Course obj1 = course;
         assertEquals(course, obj1);
 
+        Course nullCourse = null;
+        assertNotEquals(course, nullCourse);
+
         Student obj2 = new Student("miranda");
         assertNotEquals(course, obj2);
 

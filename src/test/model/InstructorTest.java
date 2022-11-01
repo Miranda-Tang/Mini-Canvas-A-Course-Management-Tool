@@ -89,6 +89,9 @@ public class InstructorTest {
         Instructor obj1 = instructor;
         assertEquals(instructor, obj1);
 
+        Instructor nullInstructor = null;
+        assertNotEquals(instructor, nullInstructor);
+
         Student obj2 = new Student("miranda");
         assertNotEquals(instructor, obj2);
 

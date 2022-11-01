@@ -53,7 +53,10 @@ public class CourseGradeTest {
     @Test
     public void testEquals() {
         CourseGrade obj1 = courseGrade6;
-        assertEquals(obj1, courseGrade6);
+        assertEquals(courseGrade6, obj1);
+
+        CourseGrade nullCourseGrade = null;
+        assertNotEquals(courseGrade6, nullCourseGrade);
 
         Course obj2 = new Course("cpsc 110", 4, new Instructor("gregor"));
         assertNotEquals(courseGrade6, obj2);

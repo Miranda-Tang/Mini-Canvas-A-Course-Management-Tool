@@ -55,6 +55,9 @@ public class StudentTest {
         Student obj1 = student;
         assertEquals(student, obj1);
 
+        Student nullStudent = null;
+        assertNotEquals(student, nullStudent);
+
         Instructor obj2 = new Instructor("gregor");
         assertNotEquals(student, obj2);
 
