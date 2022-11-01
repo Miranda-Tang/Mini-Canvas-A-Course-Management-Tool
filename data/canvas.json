@@ -319,6 +319,19 @@
                             "courseID": "wrds 150"
                         }
                     ]
+                },
+                {
+                    "name": "kate",
+                    "courseGrades": [
+                        {
+                            "grade": 85,
+                            "courseID": "engl 304"
+                        },
+                        {
+                            "grade": 78,
+                            "courseID": "stat 203"
+                        }
+                    ]
                 }
             ],
             "courseID": "math 180"

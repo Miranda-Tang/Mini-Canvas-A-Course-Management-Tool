@@ -10,6 +10,64 @@ public class CourseGrade implements Writable {
     private final String courseID;
     private final int grade;
 
+    // REQUIRES: 0 <= skippedClass <= 10 && 0 <= correctQuestion <= 10
+    // EFFECTS: creates a new course grade with the given number of skipped classes, project rank,
+    //                                          and number of correct questions
+    public CourseGrade(String courseID, int skippedClass, Rank projectRank, int correctQuestion) {
+        this.courseID = courseID;
+        Attendance attendance = new Attendance(skippedClass);
+        Project project = new Project(projectRank);
+        Exam exam = new Exam(correctQuestion);
+        this.grade = (int) Math.round(0.2 * attendance.mark() + 0.3 * project.mark() + 0.5 * exam.mark());
+    }
+
+    // EFFECTS: creates a new course grade with the given grade
+    public CourseGrade(String courseID, int grade) {
+        this.courseID = courseID;
+        this.grade = grade;
+    }
+
+    // getters
+    public String getCourseID() {
+        return courseID;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    // EFFECTS: returns a string representation of course grade
+    @Override
+    public String toString() {
+        return "Course: " + courseID + ", Grade: " + grade;
+    }
+
+    // EFFECTS: returns true if the two course grades are considered equivalent, false otherwise
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CourseGrade that = (CourseGrade) o;
+        return getGrade() == that.getGrade() && Objects.equals(getCourseID(), that.getCourseID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCourseID(), getGrade());
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("courseID", courseID);
+        json.put("grade", grade);
+        return json;
+    }
+
     // Represents student's attendance
     private static class Attendance implements Gradable {
         private static final int PUNISHMENT = 5;
@@ -73,63 +131,5 @@ public class CourseGrade implements Writable {
         public int mark() {
             return correctQuestion * POINTS_PER_QUESTION;
         }
-    }
-
-    // REQUIRES: 0 <= skippedClass <= 10 && 0 <= correctQuestion <= 10
-    // EFFECTS: creates a new course grade with the given number of skipped classes, project rank,
-    //                                          and number of correct questions
-    public CourseGrade(String courseID, int skippedClass, Rank projectRank, int correctQuestion) {
-        this.courseID = courseID;
-        Attendance attendance = new Attendance(skippedClass);
-        Project project = new Project(projectRank);
-        Exam exam = new Exam(correctQuestion);
-        this.grade = (int) Math.round(0.2 * attendance.mark() + 0.3 * project.mark() + 0.5 * exam.mark());
-    }
-
-    // EFFECTS: creates a new course grade with the given grade
-    public CourseGrade(String courseID, int grade) {
-        this.courseID = courseID;
-        this.grade = grade;
-    }
-
-    // getters
-    public String getCourseID() {
-        return courseID;
-    }
-
-    public int getGrade() {
-        return grade;
-    }
-
-    // EFFECTS: returns a string representation of course grade
-    @Override
-    public String toString() {
-        return "Course: " + courseID + ", Grade: " + grade;
-    }
-
-    // EFFECTS: returns true if the two course grades are considered equivalent, false otherwise
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        CourseGrade that = (CourseGrade) o;
-        return getGrade() == that.getGrade() && Objects.equals(getCourseID(), that.getCourseID());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getCourseID(), getGrade());
-    }
-
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("courseID", courseID);
-        json.put("grade", grade);
-        return json;
     }
 }

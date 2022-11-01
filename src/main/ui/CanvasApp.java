@@ -6,28 +6,27 @@ import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 // Canvas application
 // CITATION: the structure of the following program is borrowed from TellerApp
 public class CanvasApp {
     private static final String JSON_STORE = "./data/canvas.json";
-    private final JsonWriter jsonWriter;
-    private final JsonReader jsonReader;
-    private final Scanner input;
-
-    private Canvas canvas = new Canvas();
-
     private static final int DEFAULT_COURSE_SIZE = 5;
-
     private static final String QUIT_PROMPT = "To quit the program, enter 'q'.";
     private static final String RETURN_PROMPT = "To return to the previous menu, enter 'r'.";
     private static final String NOT_VALID_PROMPT = "Selection not valid. Please try again.";
-
     private static final String COURSE_NOTE = "NOTE: The courseID has to be in the following list:\n";
     private static final String INSTRUCTOR_NOTE = "NOTE: The instructor name has to be in the following list:\n";
     private static final String STUDENT_NOTE = "NOTE: The student name has to be in the following list:\n";
     private static final String GRADE_NOTE = "NOTE: Please enter an integer between 0 and 10.";
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
+    private final Scanner input;
+    private Canvas canvas = new Canvas();
 
     // EFFECTS: runs the canvas application
     public CanvasApp() throws FileNotFoundException {

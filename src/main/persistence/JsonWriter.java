@@ -3,14 +3,15 @@ package persistence;
 import model.Canvas;
 import org.json.JSONObject;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 // Represents a writer that writes JSON representation of canvas to file
 // CITATION: the structure and contents of the following program are borrowed from JsonSerializationDemo
 public class JsonWriter {
     private static final int TAB = 4;
-    private PrintWriter writer;
     private final String destination;
+    private PrintWriter writer;
 
     // EFFECTS: constructs writer to write to destination file
     public JsonWriter(String destination) {

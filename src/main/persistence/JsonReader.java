@@ -73,7 +73,7 @@ public class JsonReader {
 
     // MODIFIES: this
     // EFFECTS: parses list of courses from JSON object and adds them to canvas
-    private  void addCourseList(JSONObject jsonObject) {
+    private void addCourseList(JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("courseList");
         for (Object json : jsonArray) {
             JSONObject nextCourse = (JSONObject) json;
