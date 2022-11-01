@@ -110,8 +110,12 @@ public class CourseGrade implements Writable {
     // EFFECTS: returns true if the two course grades are considered equivalent, false otherwise
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         CourseGrade that = (CourseGrade) o;
         return getGrade() == that.getGrade() && Objects.equals(getCourseID(), that.getCourseID());
     }

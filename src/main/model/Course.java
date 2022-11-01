@@ -62,10 +62,17 @@ public class Course implements Writable {
     // EFFECTS: returns true if the two courses are considered equivalent, false otherwise
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Course course = (Course) o;
-        return getCredits() == course.getCredits() && Objects.equals(getCourseID(), course.getCourseID()) && Objects.equals(getInstructor(), course.getInstructor()) && Objects.equals(getStudents(), course.getStudents());
+        return getCredits() == course.getCredits()
+                && Objects.equals(getCourseID(), course.getCourseID())
+                && Objects.equals(getInstructor(), course.getInstructor())
+                && Objects.equals(getStudents(), course.getStudents());
     }
 
     @Override

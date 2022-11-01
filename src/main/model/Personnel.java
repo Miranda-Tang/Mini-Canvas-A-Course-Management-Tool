@@ -35,8 +35,12 @@ public abstract class Personnel implements Writable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Personnel personnel = (Personnel) o;
         return Objects.equals(getName(), personnel.getName());
     }

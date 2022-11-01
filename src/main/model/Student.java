@@ -35,9 +35,15 @@ public class Student extends Personnel {
     // EFFECTS: returns true if the two students are considered equivalent, false otherwise
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         Student student = (Student) o;
         return Objects.equals(getCourseGrades(), student.getCourseGrades());
     }
