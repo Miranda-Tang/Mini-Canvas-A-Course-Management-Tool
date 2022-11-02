@@ -41,11 +41,11 @@
             "credits": 4,
             "students": [
                 {
-                    "name": "kate",
+                    "name": "miranda",
                     "courseGrades": []
                 },
                 {
-                    "name": "steve",
+                    "name": "kate",
                     "courseGrades": []
                 },
                 {
@@ -64,15 +64,23 @@
             "credits": 3,
             "students": [
                 {
+                    "name": "harold",
+                    "courseGrades": []
+                },
+                {
                     "name": "kate",
                     "courseGrades": []
                 },
                 {
-                    "name": "steve",
+                    "name": "violet",
                     "courseGrades": []
                 },
                 {
                     "name": "francis",
+                    "courseGrades": []
+                },
+                {
+                    "name": "steve",
                     "courseGrades": []
                 },
                 {
@@ -87,19 +95,23 @@
             "credits": 4,
             "students": [
                 {
+                    "name": "miranda",
+                    "courseGrades": []
+                },
+                {
                     "name": "john",
                     "courseGrades": []
                 },
                 {
+                    "name": "violet",
+                    "courseGrades": []
+                },
+                {
+                    "name": "kate",
+                    "courseGrades": []
+                },
+                {
                     "name": "steve",
-                    "courseGrades": []
-                },
-                {
-                    "name": "harold",
-                    "courseGrades": []
-                },
-                {
-                    "name": "francis",
                     "courseGrades": []
                 }
             ],
@@ -110,15 +122,11 @@
             "credits": 4,
             "students": [
                 {
-                    "name": "kate",
-                    "courseGrades": []
-                },
-                {
                     "name": "john",
                     "courseGrades": []
                 },
                 {
-                    "name": "steve",
+                    "name": "harold",
                     "courseGrades": []
                 },
                 {
@@ -126,7 +134,7 @@
                     "courseGrades": []
                 },
                 {
-                    "name": "harold",
+                    "name": "francis",
                     "courseGrades": []
                 }
             ],
@@ -137,15 +145,15 @@
             "credits": 3,
             "students": [
                 {
-                    "name": "steve",
-                    "courseGrades": []
-                },
-                {
-                    "name": "miranda",
+                    "name": "harold",
                     "courseGrades": []
                 },
                 {
                     "name": "john",
+                    "courseGrades": []
+                },
+                {
+                    "name": "miranda",
                     "courseGrades": []
                 }
             ],
@@ -156,15 +164,19 @@
             "credits": 3,
             "students": [
                 {
-                    "name": "violet",
-                    "courseGrades": []
-                },
-                {
-                    "name": "kate",
-                    "courseGrades": []
-                },
-                {
                     "name": "steve",
+                    "courseGrades": []
+                },
+                {
+                    "name": "john",
+                    "courseGrades": []
+                },
+                {
+                    "name": "miranda",
+                    "courseGrades": []
+                },
+                {
+                    "name": "francis",
                     "courseGrades": []
                 }
             ],
@@ -175,7 +187,15 @@
             "credits": 6,
             "students": [
                 {
+                    "name": "steve",
+                    "courseGrades": []
+                },
+                {
                     "name": "harold",
+                    "courseGrades": []
+                },
+                {
+                    "name": "john",
                     "courseGrades": []
                 },
                 {
@@ -183,7 +203,7 @@
                     "courseGrades": []
                 },
                 {
-                    "name": "john",
+                    "name": "francis",
                     "courseGrades": []
                 }
             ],

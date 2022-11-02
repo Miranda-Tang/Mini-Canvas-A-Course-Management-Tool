@@ -32,6 +32,17 @@ public class Student extends Personnel {
         return res;
     }
 
+    // REQUIRES: c != null
+    // MODIFIES: this, c
+    // EFFECTS: register in course c if not registered yet;
+    //          otherwise, do nothing
+    public void addCourse(Course c) {
+        if (!courses.contains(c)) {
+            courses.add(c);
+            c.addStudent(this);
+        }
+    }
+
     // EFFECTS: returns true if the two students are considered equivalent, false otherwise
     @Override
     public boolean equals(Object o) {

@@ -354,7 +354,7 @@ public class CanvasApp {
         if (student.getCourses().contains(c)) {
             System.out.println("\nYou're already in the course!");
         } else {
-            c.addStudent(student);
+            student.addCourse(c);
             System.out.println("\nYou're now registered in " + c + ".");
         }
     }
@@ -437,7 +437,7 @@ public class CanvasApp {
             jsonWriter.open();
             jsonWriter.write(canvas);
             jsonWriter.close();
-            System.out.println("\nSaved the data to " + JSON_STORE);
+            System.out.println("Saved the data to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }

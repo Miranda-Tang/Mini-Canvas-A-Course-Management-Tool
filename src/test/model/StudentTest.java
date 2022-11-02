@@ -41,6 +41,23 @@ public class StudentTest {
     }
 
     @Test
+    public void testCourse() {
+        Instructor i = new Instructor("gregor");
+        Course c1 = new Course("cpsc 110", 4, i);
+        i.addStudentToCourse(student, c1);
+        student.addCourse(c1);
+        assertEquals(1, student.getCourses().size());
+        assertTrue(student.getCourses().contains(c1));
+
+        Course c2 = new Course("math 180", 6, i);
+        student.addCourse(c2);
+        assertEquals(2, student.getCourses().size());
+        assertTrue(student.getCourses().contains(c1));
+        assertTrue(student.getCourses().contains(c2));
+        assertTrue(c2.getStudents().contains(student));
+    }
+
+    @Test
     public void testToString() {
         assertEquals("john", student.toString());
     }

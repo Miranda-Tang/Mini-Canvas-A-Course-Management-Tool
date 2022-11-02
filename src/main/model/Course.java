@@ -49,7 +49,7 @@ public class Course implements Writable {
     public void addStudent(Student s) {
         if (!students.contains(s)) {
             students.add(s);
-            s.getCourses().add(this);
+            s.addCourse(this);
         }
     }
 
