@@ -11,14 +11,6 @@ public class Instructor extends Personnel {
         super(name);
     }
 
-    // REQUIRES: s != null && c != null &&
-    //           c is one of the courses the instructor is teaching
-    // MODIFIES: s, c
-    // EFFECTS: adds student s to course c
-    public void addStudentToCourse(Student s, Course c) {
-        c.addStudent(s);
-    }
-
     // REQUIRES: s != null && courseGrade != null
     // MODIFIES: s
     // EFFECTS: adds courseGrade to student s's course grades list

@@ -24,37 +24,6 @@ public class InstructorTest {
     }
 
     @Test
-    public void testAddStudentToCourseOneTime() {
-        Student s = new Student("john");
-        Course c = new Course("cpsc 110", 4, instructor);
-        instructor.addStudentToCourse(s, c);
-
-        assertEquals(1, s.getCourses().size());
-        assertEquals(1, c.getStudents().size());
-
-        assertTrue(s.getCourses().contains(c));
-        assertTrue(c.getStudents().contains(s));
-    }
-
-    @Test
-    public void testAddStudentToCourseMultipleTimes() {
-        Student s1 = new Student("john");
-        Student s2 = new Student("carter");
-        Course c = new Course("cpsc 110", 4, instructor);
-        instructor.addStudentToCourse(s1, c);
-        instructor.addStudentToCourse(s2, c);
-
-        assertEquals(1, s1.getCourses().size());
-        assertEquals(1, s2.getCourses().size());
-        assertEquals(2, c.getStudents().size());
-
-        assertTrue(s1.getCourses().contains(c));
-        assertTrue(s2.getCourses().contains(c));
-        assertTrue(c.getStudents().contains(s1));
-        assertTrue(c.getStudents().contains(s2));
-    }
-
-    @Test
     public void testAddStudentGradeOneTime() {
         Student s = new Student("john");
         CourseGrade courseGrade = new CourseGrade("cpsc 110", 1, GOOD, 8);
