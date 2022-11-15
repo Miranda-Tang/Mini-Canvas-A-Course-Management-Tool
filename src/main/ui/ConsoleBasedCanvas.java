@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-// Canvas application
+// Console-based Canvas application
 // CITATION: the structure of the following program is borrowed from TellerApp
 public class ConsoleBasedCanvas {
     private static final String JSON_STORE = "./data/canvas.json";
@@ -30,7 +30,7 @@ public class ConsoleBasedCanvas {
     private Canvas canvas = new Canvas();
 
     // EFFECTS: runs the canvas application
-    public ConsoleBasedCanvas() throws FileNotFoundException {
+    public ConsoleBasedCanvas() {
         input = new Scanner(System.in).useDelimiter("\n");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);

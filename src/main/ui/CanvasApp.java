@@ -46,6 +46,7 @@ public class CanvasApp extends JFrame {
         startProgram();
     }
 
+    // EFFECTS: initializes GUI
     private void initUI() {
         setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
         setResizable(false);
@@ -190,6 +191,7 @@ public class CanvasApp extends JFrame {
         add(exitButton, BorderLayout.SOUTH);
     }
 
+    // Instructor's User Interface
     private class InstructorInterface extends JFrame {
         private JComboBox<Instructor> instructors;
         private Instructor instructor;
@@ -200,6 +202,8 @@ public class CanvasApp extends JFrame {
             initUI();
         }
 
+        // MODIFIES: this
+        // EFFECTS: initializes GUI for instructors, identifies which instructor the user is
         private void initUI() {
             setBasePanel(this, "Welcome, Instructor!", GREEN);
 
@@ -223,6 +227,7 @@ public class CanvasApp extends JFrame {
             setVisible(true);
         }
 
+        // EFFECTS: displays all the courses the selected instructor is teaching
         private void displayCourses() {
             coursePanel.removeAll();
             coursePanel.setBorder(new EmptyBorder(45, 20, 45, 20));
@@ -243,6 +248,7 @@ public class CanvasApp extends JFrame {
         }
     }
 
+    // Instructor's Course Interface
     private class InstructorCourseInterface extends JFrame {
         private final Course course;
         private final JPanel detailPanel = new JPanel(new BorderLayout());
@@ -252,6 +258,9 @@ public class CanvasApp extends JFrame {
             initUI();
         }
 
+        // MODIFIES: this
+        // EFFECTS: initializes GUI for instructors where course details and more options
+        //          related to the selected course are shown
         private void initUI() {
             setBasePanel(this, "Course Information", PURPLE);
             printCourseDetail();
@@ -259,6 +268,8 @@ public class CanvasApp extends JFrame {
             setVisible(true);
         }
 
+        // MODIFIES: this
+        // EFFECTS: prints course details of the selected course
         public void printCourseDetail() {
             JLabel courseDetail = new JLabel("<html>Course: " + course.getCourseID()
                     + "<br>Credits: " + course.getCredits()
@@ -279,6 +290,7 @@ public class CanvasApp extends JFrame {
             add(detailPanel);
         }
 
+        // EFFECTS: displays 2 options the instructor can select between
         private void addOptionsPanel() {
             JPanel optionsPanel = new JPanel(new BorderLayout(20, 30));
             optionsPanel.setBackground(GREEN);
@@ -304,6 +316,7 @@ public class CanvasApp extends JFrame {
         }
     }
 
+    // Instructor's Grade Interface
     private class GradeInterface extends JFrame implements ActionListener, ItemListener {
         private final Course course;
         private JComboBox<Student> students;
@@ -320,6 +333,7 @@ public class CanvasApp extends JFrame {
             initUI();
         }
 
+        // EFFECTS: initializes GUI for instructors
         private void initUI() {
             setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
             setResizable(false);
@@ -343,12 +357,14 @@ public class CanvasApp extends JFrame {
             students.setBounds(110, 80, 200, 50);
             students.addActionListener(this);
             add(students);
-            
+
             setCompleteButton();
 
             setVisible(true);
         }
 
+        // MODIFIES: this
+        // EFFECTS: adds student's grades when clicking on the "Complete" button
         private void setCompleteButton() {
             completeButton.setVisible(false);
             completeButton.setBackground(IVORY);
@@ -365,6 +381,8 @@ public class CanvasApp extends JFrame {
             });
         }
 
+        // MODIFIES: this
+        // EFFECTS: displays the panel where instructors mark students' attendance, project, exam
         private void displayMarkPanel() {
             CardLayout cardLayout = new CardLayout();
             JPanel markPanel = new JPanel(cardLayout);
@@ -395,6 +413,8 @@ public class CanvasApp extends JFrame {
             setVisible(true);
         }
 
+        // MODIFIES: this
+        // EFFECTS: displays the panel where instructors mark students' attendance
         private JPanel createAttendancePanel() {
             JPanel attendancePanel = new JPanel();
             attendancePanel.setLayout(null);
@@ -423,6 +443,8 @@ public class CanvasApp extends JFrame {
             return attendancePanel;
         }
 
+        // MODIFIES: this
+        // EFFECTS: displays the panel where instructors mark students' project
         private JPanel createRankPanel() {
             JPanel rankPanel = new JPanel();
             rankPanel.setLayout(null);
@@ -453,6 +475,8 @@ public class CanvasApp extends JFrame {
             return rankPanel;
         }
 
+        // MODIFIES: this
+        // EFFECTS: displays the panel where instructors mark students' exam
         private JPanel createExamPanel() {
             JPanel examPanel = new JPanel();
             examPanel.setLayout(null);
@@ -501,6 +525,7 @@ public class CanvasApp extends JFrame {
         }
     }
 
+    // Instructor's "Register Student to Course" Interface
     private class RegisterStudentInterface extends JFrame {
         private final Course course;
         private final InstructorCourseInterface instructorCourseInterface;
@@ -512,6 +537,7 @@ public class CanvasApp extends JFrame {
             initUI();
         }
 
+        // EFFECTS: initializes GUI for instructors
         private void initUI() {
             setBasePanel(this, "Register: " + course, GREEN);
 
@@ -530,6 +556,9 @@ public class CanvasApp extends JFrame {
             setVisible(true);
         }
 
+        // MODIFIES: this
+        // EFFECTS: adds student to course when clicking on the "Confirm" button if student isn't registered in course
+        //          otherwise do nothing
         private void addConfirmButton() {
             ImageIcon confirmIcon = new ImageIcon(ICONS_PATH + "check.png");
 
@@ -553,6 +582,8 @@ public class CanvasApp extends JFrame {
             add(confirmButton, BorderLayout.SOUTH);
         }
 
+        // MODIFIES: this
+        // EFFECTS: displays the panel where instructors add an existing student to the course
         private JPanel createSelectStudentPanel() {
             JPanel selectStudentPanel = new JPanel(new BorderLayout());
             selectStudentPanel.setBackground(IVORY);
@@ -576,6 +607,8 @@ public class CanvasApp extends JFrame {
             return selectStudentPanel;
         }
 
+        // MODIFIES: this
+        // EFFECTS: displays the panel where instructors add a new student to the course
         private JPanel createNewStudentPanel() {
             JPanel newStudentPanel = new JPanel(new BorderLayout(20, 20));
             newStudentPanel.setBackground(IVORY);
@@ -600,7 +633,7 @@ public class CanvasApp extends JFrame {
                 canvas.addStudent(student = new Student(textField.getText()));
                 label.setText("Register New Student: " + student);
             });
-            
+
             newStudentPanel.add(label, BorderLayout.NORTH);
             newStudentPanel.add(textField);
             newStudentPanel.add(btn, BorderLayout.EAST);
@@ -609,6 +642,7 @@ public class CanvasApp extends JFrame {
         }
     }
 
+    // Student's User Interface
     private class StudentInterface extends JFrame {
         private JComboBox<Student> students;
         private Student student;
@@ -622,6 +656,8 @@ public class CanvasApp extends JFrame {
             initUI();
         }
 
+        // MODIFIES: this
+        // EFFECTS: initializes GUI for students, identifies which student the user is
         private void initUI() {
             setBasePanel(this, "Welcome, Student!", GREEN);
 
@@ -641,6 +677,7 @@ public class CanvasApp extends JFrame {
             setVisible(true);
         }
 
+        // EFFECTS: displays options students can choose between (i.e. look up grades & register new course)
         private void addBottomPanel() {
             JPanel bottomPanel = new JPanel(new GridLayout(1, 3));
             bottomPanel.setBackground(IVORY);
@@ -671,6 +708,7 @@ public class CanvasApp extends JFrame {
             add(bottomPanel, BorderLayout.SOUTH);
         }
 
+        // EFFECTS: displays all the courses the selected student is taking
         public void displayCourses() {
             coursePanel.removeAll();
             coursePanel.setBorder(new EmptyBorder(30, 20, 30, 20));
@@ -691,6 +729,7 @@ public class CanvasApp extends JFrame {
         }
     }
 
+    // Student's Course Interface
     private class StudentCourseInterface extends JFrame {
         private final Course course;
 
@@ -699,6 +738,7 @@ public class CanvasApp extends JFrame {
             initUI();
         }
 
+        // EFFECTS: initializes GUI for students where course details are shown
         private void initUI() {
             setBasePanel(this, "Course Information", PURPLE);
 
@@ -713,6 +753,7 @@ public class CanvasApp extends JFrame {
             setVisible(true);
         }
 
+        // EFFECTS: prints course details of the selected course
         private void printCourseDetail() {
             JLabel courseDetail = new JLabel("<html>Course: " + course.getCourseID()
                     + "<br>Credits: " + course.getCredits()
@@ -731,6 +772,7 @@ public class CanvasApp extends JFrame {
         }
     }
 
+    // Interface where students look up their grades
     private class LookUpGradeInterface extends JFrame {
         private final Student student;
 
@@ -739,6 +781,7 @@ public class CanvasApp extends JFrame {
             initUI();
         }
 
+        // EFFECTS: initializes GUI for students where their course grades are shown
         private void initUI() {
             setBasePanel(this, "Grade", RED);
 
@@ -753,6 +796,7 @@ public class CanvasApp extends JFrame {
             setVisible(true);
         }
 
+        // EFFECTS: displays students' course grades
         private void printGrades() {
             StringBuilder grades = new StringBuilder();
             for (CourseGrade courseGrade : student.getCourseGrades()) {
@@ -777,6 +821,7 @@ public class CanvasApp extends JFrame {
         }
     }
 
+    // Student's "Register New Course" Interface
     private class RegisterCourseInterface extends JFrame {
         private final Student student;
         private final StudentInterface studentInterface;
@@ -788,6 +833,7 @@ public class CanvasApp extends JFrame {
             initUI();
         }
 
+        // EFFECTS: initializes interface for students where they can register to a new course
         private void initUI() {
             setBasePanel(this, "Register", RED);
 
@@ -798,6 +844,8 @@ public class CanvasApp extends JFrame {
             setVisible(true);
         }
 
+        // MODIFIES: this
+        // EFFECTS: displays the panel where students select a course to register
         private JPanel createSelectCoursePanel() {
             JPanel selectCoursePanel = new JPanel(new BorderLayout());
             selectCoursePanel.setBackground(IVORY);
@@ -821,6 +869,9 @@ public class CanvasApp extends JFrame {
             return selectCoursePanel;
         }
 
+        // MODIFIES: this
+        // EFFECTS: adds student to course when clicking on the "Confirm" button if student isn't registered in course
+        //          otherwise do nothing
         private void addConfirmButton() {
             ImageIcon confirmIcon = new ImageIcon(ICONS_PATH + "check2.png");
 
@@ -845,6 +896,7 @@ public class CanvasApp extends JFrame {
         }
     }
 
+    // EFFECTS: provides a background template which is broadly used across different interfaces
     private void setBasePanel(JFrame frame, String s, Color color) {
         frame.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
         frame.setResizable(false);
@@ -865,6 +917,7 @@ public class CanvasApp extends JFrame {
         frame.add(topPanel, BorderLayout.NORTH);
     }
 
+    // EFFECTS: turns a list of courses into a JComboBox from which the target course can be selected
     private JComboBox<Course> spotCourse(List<Course> courseList) {
         int size = courseList.size();
         Course[] courses = new Course[size];
@@ -874,6 +927,7 @@ public class CanvasApp extends JFrame {
         return new JComboBox<>(courses);
     }
 
+    // EFFECTS: turns a list of instructors into a JComboBox from which the target instructor can be selected
     private JComboBox<Instructor> spotInstructor(List<Instructor> instructorList) {
         int size = instructorList.size();
         Instructor[] instructors = new Instructor[size];
@@ -883,6 +937,7 @@ public class CanvasApp extends JFrame {
         return new JComboBox<>(instructors);
     }
 
+    // EFFECTS: turns a list of students into a JComboBox from which the target student can be selected
     private JComboBox<Student> spotStudent(List<Student> studentList) {
         int size = studentList.size();
         Student[] students = new Student[size];
@@ -892,6 +947,7 @@ public class CanvasApp extends JFrame {
         return new JComboBox<>(students);
     }
 
+    // EFFECTS: provides a particular JButton meeting the specified criteria
     private JButton createButton(String s, ImageIcon imageIcon, int width) {
         JButton button = new JButton(s, imageIcon);
         button.setForeground(GREEN);
@@ -900,6 +956,7 @@ public class CanvasApp extends JFrame {
         return button;
     }
 
+    // EFFECTS: customizes an existing JButton to fit into its background
     private JButton customizeButton(JButton button, Color c) {
         button.setBackground(c);
         button.setOpaque(true);
@@ -908,7 +965,7 @@ public class CanvasApp extends JFrame {
         return button;
     }
 
-    //EFFECTS: stops receiving user input and saves the data to testReaderGeneralCanvas.json
+    //EFFECTS: stops receiving user input and saves the data to testReaderGeneralCanvas.json if permitted
     public void endProgram() {
         int command = JOptionPane.showConfirmDialog(null,
                 "Would you like to save the changes to Canvas records?",

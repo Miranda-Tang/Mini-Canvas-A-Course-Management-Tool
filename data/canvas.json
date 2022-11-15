@@ -21,8 +21,8 @@
         {
             "name": "violet",
             "courseGrades": [{
-                "grade": 90,
-                "courseID": "engl 304"
+                "grade": 88,
+                "courseID": "wrds 150"
             }]
         },
         {
@@ -39,10 +39,7 @@
         },
         {
             "name": "chloe",
-            "courseGrades": [{
-                "grade": 83,
-                "courseID": "wrds 150"
-            }]
+            "courseGrades": []
         }
     ],
     "courseList": [
@@ -51,18 +48,19 @@
             "credits": 4,
             "students": [
                 {
+                    "name": "miranda",
+                    "courseGrades": []
+                },
+                {
                     "name": "harold",
                     "courseGrades": []
                 },
                 {
-                    "name": "violet",
-                    "courseGrades": [{
-                        "grade": 90,
-                        "courseID": "engl 304"
-                    }]
+                    "name": "john",
+                    "courseGrades": []
                 },
                 {
-                    "name": "steve",
+                    "name": "kate",
                     "courseGrades": []
                 }
             ],
@@ -73,34 +71,27 @@
             "credits": 3,
             "students": [
                 {
-                    "name": "harold",
-                    "courseGrades": []
-                },
-                {
                     "name": "miranda",
                     "courseGrades": []
                 },
                 {
                     "name": "violet",
                     "courseGrades": [{
-                        "grade": 90,
-                        "courseID": "engl 304"
+                        "grade": 88,
+                        "courseID": "wrds 150"
                     }]
                 },
                 {
-                    "name": "kate",
+                    "name": "john",
                     "courseGrades": []
                 },
                 {
-                    "name": "francis",
+                    "name": "steve",
                     "courseGrades": []
                 },
                 {
                     "name": "chloe",
-                    "courseGrades": [{
-                        "grade": 83,
-                        "courseID": "wrds 150"
-                    }]
+                    "courseGrades": []
                 }
             ],
             "courseID": "wrds 150"
@@ -110,27 +101,23 @@
             "credits": 4,
             "students": [
                 {
-                    "name": "kate",
+                    "name": "miranda",
                     "courseGrades": []
                 },
                 {
-                    "name": "john",
-                    "courseGrades": []
-                },
-                {
-                    "name": "harold",
-                    "courseGrades": []
-                },
-                {
-                    "name": "francis",
+                    "name": "steve",
                     "courseGrades": []
                 },
                 {
                     "name": "violet",
                     "courseGrades": [{
-                        "grade": 90,
-                        "courseID": "engl 304"
+                        "grade": 88,
+                        "courseID": "wrds 150"
                     }]
+                },
+                {
+                    "name": "chloe",
+                    "courseGrades": []
                 }
             ],
             "courseID": "engl 301"
@@ -144,30 +131,16 @@
                     "courseGrades": []
                 },
                 {
-                    "name": "violet",
-                    "courseGrades": [{
-                        "grade": 90,
-                        "courseID": "engl 304"
-                    }]
-                },
-                {
-                    "name": "john",
-                    "courseGrades": []
-                },
-                {
-                    "name": "francis",
-                    "courseGrades": []
-                },
-                {
                     "name": "miranda",
                     "courseGrades": []
                 },
                 {
-                    "name": "chloe",
-                    "courseGrades": [{
-                        "grade": 83,
-                        "courseID": "wrds 150"
-                    }]
+                    "name": "harold",
+                    "courseGrades": []
+                },
+                {
+                    "name": "steve",
+                    "courseGrades": []
                 }
             ],
             "courseID": "engl 304"
@@ -177,27 +150,20 @@
             "credits": 3,
             "students": [
                 {
-                    "name": "john",
-                    "courseGrades": []
-                },
-                {
-                    "name": "kate",
-                    "courseGrades": []
-                },
-                {
-                    "name": "miranda",
-                    "courseGrades": []
-                },
-                {
                     "name": "steve",
                     "courseGrades": []
                 },
                 {
+                    "name": "john",
+                    "courseGrades": []
+                },
+                {
+                    "name": "harold",
+                    "courseGrades": []
+                },
+                {
                     "name": "chloe",
-                    "courseGrades": [{
-                        "grade": 83,
-                        "courseID": "wrds 150"
-                    }]
+                    "courseGrades": []
                 }
             ],
             "courseID": "stat 203"
@@ -207,19 +173,18 @@
             "credits": 3,
             "students": [
                 {
-                    "name": "steve",
-                    "courseGrades": []
-                },
-                {
-                    "name": "francis",
-                    "courseGrades": []
+                    "name": "violet",
+                    "courseGrades": [{
+                        "grade": 88,
+                        "courseID": "wrds 150"
+                    }]
                 },
                 {
                     "name": "john",
                     "courseGrades": []
                 },
                 {
-                    "name": "harold",
+                    "name": "kate",
                     "courseGrades": []
                 }
             ],
@@ -230,15 +195,22 @@
             "credits": 6,
             "students": [
                 {
+                    "name": "violet",
+                    "courseGrades": [{
+                        "grade": 88,
+                        "courseID": "wrds 150"
+                    }]
+                },
+                {
+                    "name": "steve",
+                    "courseGrades": []
+                },
+                {
                     "name": "francis",
                     "courseGrades": []
                 },
                 {
                     "name": "kate",
-                    "courseGrades": []
-                },
-                {
-                    "name": "john",
                     "courseGrades": []
                 }
             ],
