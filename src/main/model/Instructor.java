@@ -16,6 +16,7 @@ public class Instructor extends Personnel {
     // EFFECTS: adds courseGrade to student s's course grades list
     public void addStudentGrade(Student s, CourseGrade courseGrade) {
         s.getCourseGrades().add(courseGrade);
+        EventLog.getInstance().logEvent(new Event(s + "'s grade for " + courseGrade.getCourseID() + " is added."));
     }
 
     @Override

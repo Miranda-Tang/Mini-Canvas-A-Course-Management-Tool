@@ -19,6 +19,7 @@ public class Canvas implements Writable {
     public void addCourse(Course c) {
         if (!courseList.contains(c)) {
             courseList.add(c);
+            EventLog.getInstance().logEvent(new Event("New course \"" + c + "\" is created."));
         }
     }
 
@@ -28,6 +29,7 @@ public class Canvas implements Writable {
     public void addInstructor(Instructor i) {
         if (!instructorList.contains(i)) {
             instructorList.add(i);
+            EventLog.getInstance().logEvent(new Event("New instructor \"" + i + "\" is created."));
         }
     }
 
@@ -37,6 +39,7 @@ public class Canvas implements Writable {
     public void addStudent(Student s) {
         if (!studentList.contains(s)) {
             studentList.add(s);
+            EventLog.getInstance().logEvent(new Event("New student \"" + s + "\" is created."));
         }
     }
 
@@ -95,4 +98,3 @@ public class Canvas implements Writable {
         return jsonArray;
     }
 }
-

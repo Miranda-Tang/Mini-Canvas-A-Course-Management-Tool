@@ -33,3 +33,113 @@ The target is to be able to combine course information and student data for a **
 - You can locate my visual component by looking at the **icons** used in buttons and background.
 - You can **save** the state of my application through a pop-up window which asks you whether to save data or not when the application ends.
 - You can **reload** the state of my application through a pop-up window which asks you whether to load data or not when the application starts.
+
+## 📸 Phase 4: Task 2
+* Thu Nov 24 15:28:08 PST 2022
+* New instructor "gregor" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New instructor "tara" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New instructor "eugenia" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New instructor "jamie" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New course "cpsc 110" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New course "wrds 150" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New course "engl 301" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New course "engl 304" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New course "stat 203" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New course "stat 200" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New course "math 180" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New student "miranda" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New student "francis" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New student "kate" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New student "violet" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New student "harold" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New student "john" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* New student "steve" is created.
+* Thu Nov 24 15:28:08 PST 2022
+* Student "miranda" is registered to course "cpsc 110".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "francis" is registered to course "cpsc 110".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "violet" is registered to course "cpsc 110".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "harold" is registered to course "cpsc 110".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "john" is registered to course "wrds 150".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "violet" is registered to course "wrds 150".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "kate" is registered to course "wrds 150".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "miranda" is registered to course "wrds 150".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "kate" is registered to course "engl 301".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "miranda" is registered to course "engl 301".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "harold" is registered to course "engl 301".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "steve" is registered to course "engl 301".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "miranda" is registered to course "engl 304".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "violet" is registered to course "engl 304".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "harold" is registered to course "engl 304".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "steve" is registered to course "engl 304".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "francis" is registered to course "stat 203".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "harold" is registered to course "stat 203".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "steve" is registered to course "stat 203".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "kate" is registered to course "stat 203".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "violet" is registered to course "stat 203".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "kate" is registered to course "stat 200".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "miranda" is registered to course "stat 200".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "violet" is registered to course "stat 200".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "francis" is registered to course "stat 200".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "john" is registered to course "math 180".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "francis" is registered to course "math 180".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "violet" is registered to course "math 180".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "miranda" is registered to course "math 180".
+* Thu Nov 24 15:28:08 PST 2022
+* Student "harold" is registered to course "math 180".
+* Thu Nov 24 15:28:15 PST 2022
+* Student "francis" is registered to course "wrds 150".
+* Thu Nov 24 15:28:20 PST 2022
+* New student "chloe" is created.
+* Thu Nov 24 15:28:21 PST 2022
+* Student "chloe" is registered to course "wrds 150".
+* Thu Nov 24 15:28:29 PST 2022
+* francis's grade for wrds 150 is added.
+* Thu Nov 24 15:28:42 PST 2022
+* Student "chloe" is registered to course "stat 203".
+
+* Process finished with exit code 0

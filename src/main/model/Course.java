@@ -50,6 +50,8 @@ public class Course implements Writable {
         if (!students.contains(s)) {
             students.add(s);
             s.addCourse(this);
+            EventLog.getInstance().logEvent(
+                    new Event("Student \"" + s + "\" is registered to course \"" + this + "\"."));
         }
     }
 
@@ -101,4 +103,3 @@ public class Course implements Writable {
         return jsonArray;
     }
 }
-

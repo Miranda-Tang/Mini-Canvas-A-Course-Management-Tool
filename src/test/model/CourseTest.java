@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,6 +15,11 @@ class CourseTest {
     @BeforeEach
     public void runBefore() {
         course = new Course("cpsc 110", 4, new Instructor("gregor"));
+        Iterator<Event> it = EventLog.getInstance().iterator();
+        while (it.hasNext()) {
+            it.next();
+            it.remove();
+        }
     }
 
     @Test
@@ -59,6 +65,13 @@ class CourseTest {
         List<Student> students = course.getStudents();
         assertEquals(1, students.size());
         assertTrue(students.contains(s1));
+    }
+
+    @Test
+    public void testAddStudentEventLog() {
+        course.addStudent(new Student("john"));
+        assertEquals("Student \"john\" is registered to course \"cpsc 110\".",
+                EventLog.getInstance().iterator().next().getDescription());
     }
 
     @Test

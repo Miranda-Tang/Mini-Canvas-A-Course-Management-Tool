@@ -1,6 +1,7 @@
 package ui;
 
 import model.Canvas;
+import model.Event;
 import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -23,11 +24,7 @@ import java.util.Random;
 // Canvas application
 public class CanvasApp extends JFrame {
     private static final String JSON_STORE = "./data/canvas.json";
-    private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
-    private final JsonReader jsonReader = new JsonReader(JSON_STORE);
-
     private static final int DEFAULT_COURSE_SIZE = 5;
-
     private static final String ICONS_PATH = "src/main/ui/icons/";
     private static final ImageIcon BOOKS = new ImageIcon(ICONS_PATH + "books.png");
     private static final int CANVAS_WIDTH = 420;
@@ -36,7 +33,8 @@ public class CanvasApp extends JFrame {
     private static final Color IVORY = new Color(0xFCF8E8);
     private static final Color GREEN = new Color(0x94B49F);
     private static final Color PURPLE = new Color(0x76549A);
-
+    private final JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
+    private final JsonReader jsonReader = new JsonReader(JSON_STORE);
     private Canvas canvas = new Canvas();
 
     // EFFECTS: runs the canvas application
@@ -191,12 +189,130 @@ public class CanvasApp extends JFrame {
         add(exitButton, BorderLayout.SOUTH);
     }
 
+    // EFFECTS: provides a background template which is broadly used across different interfaces
+    private void setBasePanel(JFrame frame, String s, Color color) {
+        frame.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+        frame.setResizable(false);
+        frame.setLayout(new BorderLayout(20, 0));
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.getContentPane().setBackground(IVORY);
+
+        JLabel welcome = new JLabel(s, BOOKS, JLabel.CENTER);
+        welcome.setForeground(IVORY);
+        welcome.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        welcome.setIconTextGap(10);
+
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(color);
+        topPanel.setPreferredSize(new Dimension(WIDTH, 50));
+        topPanel.add(welcome);
+        frame.add(topPanel, BorderLayout.NORTH);
+    }
+
+    // EFFECTS: turns a list of courses into a JComboBox from which the target course can be selected
+    private JComboBox<Course> spotCourse(List<Course> courseList) {
+        int size = courseList.size();
+        Course[] courses = new Course[size];
+        for (int i = 0; i < size; i++) {
+            courses[i] = courseList.get(i);
+        }
+        return new JComboBox<>(courses);
+    }
+
+    // EFFECTS: turns a list of instructors into a JComboBox from which the target instructor can be selected
+    private JComboBox<Instructor> spotInstructor(List<Instructor> instructorList) {
+        int size = instructorList.size();
+        Instructor[] instructors = new Instructor[size];
+        for (int i = 0; i < size; i++) {
+            instructors[i] = instructorList.get(i);
+        }
+        return new JComboBox<>(instructors);
+    }
+
+    // EFFECTS: turns a list of students into a JComboBox from which the target student can be selected
+    private JComboBox<Student> spotStudent(List<Student> studentList) {
+        int size = studentList.size();
+        Student[] students = new Student[size];
+        for (int i = 0; i < size; i++) {
+            students[i] = studentList.get(i);
+        }
+        return new JComboBox<>(students);
+    }
+
+    // EFFECTS: provides a particular JButton meeting the specified criteria
+    private JButton createButton(String s, ImageIcon imageIcon, int width) {
+        JButton button = new JButton(s, imageIcon);
+        button.setForeground(GREEN);
+        button.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        button.setPreferredSize(new Dimension(width, 50));
+        return button;
+    }
+
+    // EFFECTS: customizes an existing JButton to fit into its background
+    private JButton customizeButton(JButton button, Color c) {
+        button.setBackground(c);
+        button.setOpaque(true);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        return button;
+    }
+
+    //EFFECTS: stops receiving user input and saves the data to testReaderGeneralCanvas.json if permitted
+    public void endProgram() {
+        int command = JOptionPane.showConfirmDialog(null,
+                "Would you like to save the changes to Canvas records?",
+                "", JOptionPane.YES_NO_OPTION);
+        if (command == JOptionPane.YES_OPTION) {
+            saveCanvas();
+        }
+        dispose();
+        printLog(EventLog.getInstance());
+        System.exit(0);
+    }
+
+    // EFFECTS: saves canvas to file
+    private void saveCanvas() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(canvas);
+            jsonWriter.close();
+            JOptionPane.showMessageDialog(null,
+                    "Saved the data to " + JSON_STORE,
+                    "Save", JOptionPane.INFORMATION_MESSAGE);
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Unable to write to file: " + JSON_STORE,
+                    "Fail to write", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads canvas from file
+    private void loadCanvas() {
+        try {
+            canvas = jsonReader.read();
+            JOptionPane.showMessageDialog(null,
+                    "Loaded the data from " + JSON_STORE,
+                    "Load", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Unable to read from file: " + JSON_STORE,
+                    "Fail to Load", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString());
+        }
+    }
+
     // Instructor's User Interface
     private class InstructorInterface extends JFrame {
+        private final JPanel coursePanel = new JPanel(new GridLayout(0, 1));
         private JComboBox<Instructor> instructors;
         private Instructor instructor;
-
-        private final JPanel coursePanel = new JPanel(new GridLayout(0, 1));
 
         InstructorInterface() {
             initUI();
@@ -319,14 +435,12 @@ public class CanvasApp extends JFrame {
     // Instructor's Grade Interface
     private class GradeInterface extends JFrame implements ActionListener, ItemListener {
         private final Course course;
+        private final JButton completeButton = new JButton("Complete Grading");
         private JComboBox<Student> students;
         private Student student;
-
         private int skippedClass;
         private Rank projectRank;
         private int correctQuestion;
-
-        private final JButton completeButton = new JButton("Complete Grading");
 
         GradeInterface(Course course) {
             this.course = course;
@@ -644,13 +758,11 @@ public class CanvasApp extends JFrame {
 
     // Student's User Interface
     private class StudentInterface extends JFrame {
+        private final JPanel coursePanel = new JPanel(new GridLayout(0, 1));
         private JComboBox<Student> students;
         private Student student;
-
         private JButton gradeButton;
         private JButton registerButton;
-
-        private final JPanel coursePanel = new JPanel(new GridLayout(0, 1));
 
         StudentInterface() {
             initUI();
@@ -893,118 +1005,6 @@ public class CanvasApp extends JFrame {
             });
 
             add(confirmButton, BorderLayout.SOUTH);
-        }
-    }
-
-    // EFFECTS: provides a background template which is broadly used across different interfaces
-    private void setBasePanel(JFrame frame, String s, Color color) {
-        frame.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
-        frame.setResizable(false);
-        frame.setLayout(new BorderLayout(20, 0));
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.getContentPane().setBackground(IVORY);
-
-        JLabel welcome = new JLabel(s, BOOKS, JLabel.CENTER);
-        welcome.setForeground(IVORY);
-        welcome.setFont(new Font("Times New Roman", Font.BOLD, 30));
-        welcome.setIconTextGap(10);
-
-        JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setBackground(color);
-        topPanel.setPreferredSize(new Dimension(WIDTH, 50));
-        topPanel.add(welcome);
-        frame.add(topPanel, BorderLayout.NORTH);
-    }
-
-    // EFFECTS: turns a list of courses into a JComboBox from which the target course can be selected
-    private JComboBox<Course> spotCourse(List<Course> courseList) {
-        int size = courseList.size();
-        Course[] courses = new Course[size];
-        for (int i = 0; i < size; i++) {
-            courses[i] = courseList.get(i);
-        }
-        return new JComboBox<>(courses);
-    }
-
-    // EFFECTS: turns a list of instructors into a JComboBox from which the target instructor can be selected
-    private JComboBox<Instructor> spotInstructor(List<Instructor> instructorList) {
-        int size = instructorList.size();
-        Instructor[] instructors = new Instructor[size];
-        for (int i = 0; i < size; i++) {
-            instructors[i] = instructorList.get(i);
-        }
-        return new JComboBox<>(instructors);
-    }
-
-    // EFFECTS: turns a list of students into a JComboBox from which the target student can be selected
-    private JComboBox<Student> spotStudent(List<Student> studentList) {
-        int size = studentList.size();
-        Student[] students = new Student[size];
-        for (int i = 0; i < size; i++) {
-            students[i] = studentList.get(i);
-        }
-        return new JComboBox<>(students);
-    }
-
-    // EFFECTS: provides a particular JButton meeting the specified criteria
-    private JButton createButton(String s, ImageIcon imageIcon, int width) {
-        JButton button = new JButton(s, imageIcon);
-        button.setForeground(GREEN);
-        button.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        button.setPreferredSize(new Dimension(width, 50));
-        return button;
-    }
-
-    // EFFECTS: customizes an existing JButton to fit into its background
-    private JButton customizeButton(JButton button, Color c) {
-        button.setBackground(c);
-        button.setOpaque(true);
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        return button;
-    }
-
-    //EFFECTS: stops receiving user input and saves the data to testReaderGeneralCanvas.json if permitted
-    public void endProgram() {
-        int command = JOptionPane.showConfirmDialog(null,
-                "Would you like to save the changes to Canvas records?",
-                "", JOptionPane.YES_NO_OPTION);
-        if (command == JOptionPane.YES_OPTION) {
-            saveCanvas();
-        }
-        dispose();
-        System.exit(0);
-    }
-
-    // EFFECTS: saves canvas to file
-    private void saveCanvas() {
-        try {
-            jsonWriter.open();
-            jsonWriter.write(canvas);
-            jsonWriter.close();
-            JOptionPane.showMessageDialog(null,
-                    "Saved the data to " + JSON_STORE,
-                    "Save", JOptionPane.INFORMATION_MESSAGE);
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Unable to write to file: " + JSON_STORE,
-                    "Fail to write", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    // MODIFIES: this
-    // EFFECTS: loads canvas from file
-    private void loadCanvas() {
-        try {
-            canvas = jsonReader.read();
-            JOptionPane.showMessageDialog(null,
-                    "Loaded the data from " + JSON_STORE,
-                    "Load", JOptionPane.INFORMATION_MESSAGE);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Unable to read from file: " + JSON_STORE,
-                    "Fail to Load", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

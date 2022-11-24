@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static model.Rank.GOOD;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,6 +15,11 @@ public class StudentTest {
     @BeforeEach
     public void runBefore() {
         student = new Student("john");
+        Iterator<Event> it = EventLog.getInstance().iterator();
+        while (it.hasNext()) {
+            it.next();
+            it.remove();
+        }
     }
 
     @Test
@@ -41,13 +47,13 @@ public class StudentTest {
     }
 
     @Test
-    public void testCourse() {
+    public void testAddCourse() {
         Instructor i = new Instructor("gregor");
         Course c1 = new Course("cpsc 110", 4, i);
-        c1.addStudent(student);
         student.addCourse(c1);
         assertEquals(1, student.getCourses().size());
         assertTrue(student.getCourses().contains(c1));
+        assertTrue(c1.getStudents().contains(student));
 
         Course c2 = new Course("math 180", 6, i);
         student.addCourse(c2);
@@ -55,6 +61,13 @@ public class StudentTest {
         assertTrue(student.getCourses().contains(c1));
         assertTrue(student.getCourses().contains(c2));
         assertTrue(c2.getStudents().contains(student));
+    }
+
+    @Test
+    public void testAddCourseEventLog() {
+        student.addCourse(new Course("cpsc 110", 4, new Instructor("gregor")));
+        assertEquals("Student \"john\" is registered to course \"cpsc 110\".",
+                EventLog.getInstance().iterator().next().getDescription());
     }
 
     @Test

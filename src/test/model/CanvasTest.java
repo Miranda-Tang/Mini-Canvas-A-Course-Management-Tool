@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,6 +15,11 @@ public class CanvasTest {
     @BeforeEach
     public void runBefore() {
         canvas = new Canvas();
+        Iterator<Event> it = EventLog.getInstance().iterator();
+        while (it.hasNext()) {
+            it.next();
+            it.remove();
+        }
     }
 
     @Test
@@ -51,6 +57,13 @@ public class CanvasTest {
     }
 
     @Test
+    public void testAddCourseEventLog() {
+        canvas.addCourse(new Course("cpsc 110", 4, new Instructor("gregor")));
+        assertEquals("New course \"cpsc 110\" is created.",
+                EventLog.getInstance().iterator().next().getDescription());
+    }
+
+    @Test
     public void testAddInstructor() {
         Instructor i1 = new Instructor("gregor");
         Instructor i2 = new Instructor("tara");
@@ -78,6 +91,13 @@ public class CanvasTest {
     }
 
     @Test
+    public void testAddInstructorEventLog() {
+        canvas.addInstructor(new Instructor("tara"));
+        assertEquals("New instructor \"tara\" is created.",
+                EventLog.getInstance().iterator().next().getDescription());
+    }
+
+    @Test
     public void testAddStudent() {
         Student s1 = new Student("harold");
         Student s2 = new Student("john");
@@ -102,5 +122,12 @@ public class CanvasTest {
         students.add(s1);
 
         assertEquals(students, canvas.getStudentList());
+    }
+
+    @Test
+    public void testAddStudentEventLog() {
+        canvas.addStudent(new Student("john"));
+        assertEquals("New student \"john\" is created.",
+                EventLog.getInstance().iterator().next().getDescription());
     }
 }
