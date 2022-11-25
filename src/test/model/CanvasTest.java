@@ -15,10 +15,10 @@ public class CanvasTest {
     @BeforeEach
     public void runBefore() {
         canvas = new Canvas();
-        Iterator<Event> it = EventLog.getInstance().iterator();
-        while (it.hasNext()) {
-            it.next();
-            it.remove();
+        Iterator<Event> itr = EventLog.getInstance().iterator();
+        while (itr.hasNext()) {
+            itr.next();
+            itr.remove();
         }
     }
 

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static model.Rank.EXCELLENT;
 import static model.Rank.GOOD;
@@ -15,6 +16,11 @@ public class InstructorTest {
     @BeforeEach
     public void runBefore() {
         instructor = new Instructor("harold");
+        Iterator<Event> itr = EventLog.getInstance().iterator();
+        while (itr.hasNext()) {
+            itr.next();
+            itr.remove();
+        }
     }
 
     @Test
@@ -46,6 +52,15 @@ public class InstructorTest {
         assertEquals(2, s.getCourseGrades().size());
         assertTrue(s.getCourseGrades().contains(courseGrade1));
         assertTrue(s.getCourseGrades().contains(courseGrade2));
+    }
+
+    @Test
+    public void testAddStudentGradeEventLog() {
+        Student s = new Student("john");
+        CourseGrade courseGrade = new CourseGrade("cpsc 110", 1, GOOD, 8);
+        instructor.addStudentGrade(s, courseGrade);
+        assertEquals("john's grade for cpsc 110 is added.",
+                EventLog.getInstance().iterator().next().getDescription());
     }
 
     @Test

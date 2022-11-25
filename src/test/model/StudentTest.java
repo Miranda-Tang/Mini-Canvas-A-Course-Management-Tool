@@ -15,10 +15,10 @@ public class StudentTest {
     @BeforeEach
     public void runBefore() {
         student = new Student("john");
-        Iterator<Event> it = EventLog.getInstance().iterator();
-        while (it.hasNext()) {
-            it.next();
-            it.remove();
+        Iterator<Event> itr = EventLog.getInstance().iterator();
+        while (itr.hasNext()) {
+            itr.next();
+            itr.remove();
         }
     }
 
