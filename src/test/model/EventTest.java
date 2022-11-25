@@ -38,10 +38,14 @@ public class EventTest {
 
         Event e1 = new Event("event");
         Event e2 = new Event("event");
+        assertEquals(e1.getDate(), e2.getDate());
+        assertEquals(e1.getDescription(), e2.getDescription());
         assertEquals(e1, e2);
         assertEquals(e1.hashCode(), e2.hashCode());
+
         Event e3 = new Event("new event");
         assertNotEquals(e1, e3);
+
         Event e4 = new Event("New course \"math180\" is created.");
         assertNotEquals(e.getDate(), e4.getDate());
         assertNotEquals(e, e4);
