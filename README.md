@@ -143,3 +143,9 @@ The target is to be able to combine course information and student data for a **
 * Student "chloe" is registered to course "stat 203".
 
 * Process finished with exit code 0
+
+## 🤔 Phase 4: Task 3
+1. [x] Move nested classes inside `CanvasApp` out and make them independent classes that extend `CanvasApp`.
+2. [x] Apply `Singleton pattern` to ensure that all GUI-related classes are dealing with the same database (Canvas).
+3. [x] Extract common pattern from each GUI interface and create a method to set up this template wherever needed to avoid duplication and lower semantic coupling.
+4. [x] Add checked exceptions to prevent the program from crashing when there's invalid input.

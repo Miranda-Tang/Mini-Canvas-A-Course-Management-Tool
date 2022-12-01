@@ -40,6 +40,13 @@
         {
             "name": "chloe",
             "courseGrades": []
+        },
+        {
+            "name": "yan",
+            "courseGrades": [{
+                "grade": 94,
+                "courseID": "stat 200"
+            }]
         }
     ],
     "courseList": [
@@ -92,6 +99,13 @@
                 {
                     "name": "miranda",
                     "courseGrades": []
+                },
+                {
+                    "name": "yan",
+                    "courseGrades": [{
+                        "grade": 94,
+                        "courseID": "stat 200"
+                    }]
                 }
             ],
             "courseID": "wrds 150"
@@ -168,6 +182,13 @@
                 {
                     "name": "chloe",
                     "courseGrades": []
+                },
+                {
+                    "name": "yan",
+                    "courseGrades": [{
+                        "grade": 94,
+                        "courseID": "stat 200"
+                    }]
                 }
             ],
             "courseID": "stat 203"
@@ -187,6 +208,17 @@
                 {
                     "name": "miranda",
                     "courseGrades": []
+                },
+                {
+                    "name": "harold",
+                    "courseGrades": []
+                },
+                {
+                    "name": "yan",
+                    "courseGrades": [{
+                        "grade": 94,
+                        "courseID": "stat 200"
+                    }]
                 }
             ],
             "courseID": "stat 200"
