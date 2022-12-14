@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Random;
 
 // Canvas application
-public class CanvasApp extends JFrame {
+public class MiniCanvasApp extends JFrame {
     private static final String JSON_STORE = "./data/canvas.json";
     private static final int DEFAULT_COURSE_SIZE = 5;
     private static final String ICONS_PATH = "src/main/ui/icons/";
@@ -38,7 +38,7 @@ public class CanvasApp extends JFrame {
     private Canvas canvas = new Canvas();
 
     // EFFECTS: runs the canvas application
-    public CanvasApp() throws FileNotFoundException {
+    public MiniCanvasApp() throws FileNotFoundException {
         super("Canvas");
         initUI();
         startProgram();
