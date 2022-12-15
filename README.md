@@ -27,3 +27,7 @@ The target is to be able to combine course information and student data for a **
 ***
 - As an instructor or a student, I want to be able to save the Canvas records to file.
 - As an instructor or a student, I want to be able to load the Canvas records from file.
+
+## 📝 Technical Points
+- Achieve data persistence using `JSON`
+- Develop GUI using the Java `Swing` library
