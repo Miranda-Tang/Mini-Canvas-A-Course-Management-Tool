@@ -32,6 +32,11 @@ The target is to be able to combine course information and student data for a **
 - Achieve data persistence using `JSON`
 - Develop GUI using the Java `Swing` library
 
+## Demo Video
+
+https://user-images.githubusercontent.com/81618041/236121322-215152a0-3ed6-4fb8-bcb4-bc038e9f54e3.mp4
+
+
 ## 🖼 Demo Pictures
 ![demo1](Demo_Pictures/iShot_2023-04-22_18.27.34.png)
 ![demo2](Demo_Pictures/iShot_2023-04-22_18.27.55.png)
