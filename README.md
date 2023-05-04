@@ -13,6 +13,7 @@ Possible features include:
 - Visualizing student's grades in a dashboard.
 
 The target is to be able to combine course information and student data for a **full picture** of the course and its activity. Through this project I expect to discover valuable connections between CS and my previous studies in the field of education.
+<br>
 
 ## 📝 User Stories
 
@@ -27,17 +28,19 @@ The target is to be able to combine course information and student data for a **
 ***
 - As an instructor or a student, I want to be able to save the Canvas records to file.
 - As an instructor or a student, I want to be able to load the Canvas records from file.
+<br>
 
-## 🔭 Technical Points
+## 🔭 Technical Skills
 - Achieve data persistence using `JSON`
 - Develop GUI using the Java `Swing` library
+<br>
 
-## Demo Video
+## 🎬 Demo Video
 
 https://user-images.githubusercontent.com/81618041/236121322-215152a0-3ed6-4fb8-bcb4-bc038e9f54e3.mp4
+<br>
 
-
-## 🖼 Demo Pictures
+## 📸 Demo Pictures
 ![demo1](Demo_Pictures/iShot_2023-04-22_18.27.34.png)
 ![demo2](Demo_Pictures/iShot_2023-04-22_18.27.55.png)
 ![demo3](Demo_Pictures/iShot_2023-04-22_18.28.12.png)
