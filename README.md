@@ -33,6 +33,7 @@ The target is to be able to combine course information and student data for a **
 <br>
 
 ## 🔭 Technical Skills
+- Object-oriented programming (OOP)
 - Achieve data persistence using `JSON`
 - Develop GUI using the Java `Swing` library
 
