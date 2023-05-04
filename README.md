@@ -47,7 +47,7 @@ https://user-images.githubusercontent.com/81618041/236121322-215152a0-3ed6-4fb8-
 
 ## 📸 Demo Pictures
 ![demo1](Demo_Pictures/iShot_2023-04-22_18.27.34.png)｜![demo2](Demo_Pictures/iShot_2023-04-22_18.27.55.png)｜![demo3](Demo_Pictures/iShot_2023-04-22_18.28.12.png)
-
+---|---|---
 
 ![demo4](Demo_Pictures/iShot_2023-04-22_18.28.36.png)
 ![demo5](Demo_Pictures/iShot_2023-04-22_18.28.52.png)
