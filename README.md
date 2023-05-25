@@ -40,6 +40,7 @@ The target is to be able to combine course information and student data for a **
 <br>
 
 ## 🎬 Demo Video
+*Please feel free to turn on the sound.*
 
 https://user-images.githubusercontent.com/81618041/236121322-215152a0-3ed6-4fb8-bcb4-bc038e9f54e3.mp4
 
