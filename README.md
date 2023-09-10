@@ -1,4 +1,4 @@
-# Mini Canvas: A Learning Analytics Tool
+# Mini Canvas: A Course Management Tool
 
 *Given a course ID, extract details of the course.*
 
