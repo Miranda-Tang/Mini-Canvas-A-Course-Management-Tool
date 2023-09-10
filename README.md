@@ -1,6 +1,6 @@
 # Mini Canvas: A Learning Analytics Tool
 
-*Given a course id, extracts details of course.*
+*Given a course ID, extract details of the course.*
 
 ## 📚 Description
 
@@ -9,33 +9,10 @@ The goal of this project is to build a tool that is useful to instructors and st
 Possible features include:
 - Specifying a course to get detailed information;
 - Adding a student to a certain course;
-- Entering students' grades of each course;
+- Entering students' grades for each course;
 - Visualizing student's grades in a dashboard.
 
-The target is to be able to combine course information and student data for a **full picture** of the course and its activity. Through this project I expect to discover valuable connections between CS and my previous studies in the field of education.
-
-<br>
-
-## 📝 User Stories
-
-- As an instructor, I want to be able to view the list of courses I'm teaching.
-- As an instructor, I want to be able to select a course in my database and view the course in detail.
-- As an instructor, I want to be able to enter a student's grade of a certain course.
-- As an instructor, I want to be able to select a course and add a new student to that course.
-***
-- As a student, I want to be able to view the list of courses I'm learning.
-- As a student, I want to be able to view my grades of all the courses taken.
-- As a student, I want to be able to register in a new course.
-***
-- As an instructor or a student, I want to be able to save the Canvas records to file.
-- As an instructor or a student, I want to be able to load the Canvas records from file.
-
-<br>
-
-## 🔭 Technical Skills
-- Object-oriented programming (OOP)
-- Achieve data persistence using `JSON`
-- Develop GUI using the Java `Swing` library
+The target is to be able to combine course information and student data for a **full picture** of the course and its activity. Through this project, I will discover valuable connections between CS and my previous studies in education.
 
 <br>
 
@@ -56,4 +33,28 @@ https://user-images.githubusercontent.com/81618041/236121322-215152a0-3ed6-4fb8-
 <div align="center">
    <img src="Demo_Pictures/iShot_2023-04-22_18.30.48.png"  height=250><img src="Demo_Pictures/iShot_2023-04-22_18.31.01.png" height=250><img src="Demo_Pictures/iShot_2023-04-22_18.31.53.png" height=250>
 </div>
+
+<br>
+
+## 📝 User Stories
+
+- As an instructor, I want to be able to view the list of courses I'm teaching.
+- As an instructor, I want to be able to select a course in my database and view the course in detail.
+- As an instructor, I want to be able to enter a student's grade in a certain course.
+- As an instructor, I want to be able to select a course and add a new student to that course.
+***
+- As a student, I want to be able to view the list of courses I'm learning.
+- As a student, I want to be able to view my grades for all the courses taken.
+- As a student, I want to be able to register for a new course.
+***
+- As an instructor or a student, I want to be able to save the Canvas records to a file.
+- As an instructor or a student, I want to be able to load the Canvas records from the file.
+
+<br>
+
+## 🔭 Technical Skills
+- Object-oriented programming (OOP)
+- Achieve data persistence using `JSON`
+- Develop GUI using the Java `Swing` library
+
 
