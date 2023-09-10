@@ -3,7 +3,6 @@
 *Given a course ID, extract details of the course.*
 
 ## 📚 Description
-
 The goal of this project is to build a tool that is useful to instructors and students in course management. Each course is identified by a unique `course_id` and contains information about the number of `credits` the course is worth, the `instructor` of the course as well as `students` enrolled in this course.
 
 Possible features include:
@@ -37,7 +36,6 @@ https://user-images.githubusercontent.com/81618041/236121322-215152a0-3ed6-4fb8-
 <br>
 
 ## 📝 User Stories
-
 - As an instructor, I want to be able to view the list of courses I'm teaching.
 - As an instructor, I want to be able to select a course in my database and view the course in detail.
 - As an instructor, I want to be able to enter a student's grade in a certain course.
